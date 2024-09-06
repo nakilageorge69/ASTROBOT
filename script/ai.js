@@ -20,8 +20,8 @@ module.exports.run = async function ({ api, event, args, message }) {
       return;
     }
 
-    const result = await axios.get(`https://deku-rest-api.gleeze.com/new/gemini?prompt=${encodeURIComponent(prompt)}`);
-    const answer = result.data.answer;
+    const response = await axios.get(`https://deku-rest-api.gleeze.com/new/gemini?prompt=${encodeURIComponent(prompt)}`);
+    const answer = response.data.answer;
 
     await api.sendMessage({
       body: `AI | 🍓

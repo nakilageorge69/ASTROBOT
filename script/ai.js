@@ -20,7 +20,7 @@ module.exports.run = async function ({ api, event, args, message }) {
       return;
     }
 
-    const response = await axios.get(`https://deku-rest-api.gleeze.com/new/gemini?prompt=${encodeURIComponent(prompt)}`);
+    const response = await axios.get(`https://mywebsite-rest-api.vercel.app/api/redirect?model=openai%2Fgpt-3.5-turbo-0613&prompt=${encodeURIComponent(prompt)}`);
     const answer = response.data.answer;
 
     await api.sendMessage({

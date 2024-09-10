@@ -4,7 +4,7 @@ module.exports.config = {
   name: "ai",
   version: "69",
   role: 0,
-  credits: "OtinXSandip", // converted by kira
+  credits: "OtinXSandip", // converted by homer
   description: "ask AI",
   usages: "ask <question>",
   hasPrefix: false,
@@ -16,7 +16,7 @@ module.exports.run = async function ({ api, event, args, message }) {
   try {
     const prompt = event.body.trim();
     if (!prompt) {
-      await api.sendMessage({ body: "Hey I am Nemo, ask me questions dear🦥" }, event.threadID);
+      await api.sendMessage({ body: "Hey I am Bogart ask me a question." }, event.threadID);
       return;
     }
 
@@ -24,10 +24,7 @@ module.exports.run = async function ({ api, event, args, message }) {
     const answer = response.data.answer;
 
     await api.sendMessage({
-      body: `Bogart AI Bot
-━━━━━━━━━━━━━        
-${answer}
-━━━━━━━━━━━━━`,
+      body: `•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 |•\n\n${answer}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`,
     }, event.threadID);
 
   } catch (error) {

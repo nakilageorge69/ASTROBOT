@@ -24,7 +24,7 @@ module.exports.run = async function ({ api, event, args, message }) {
     const answer = response.data.answer;
 
     await api.sendMessage({
-      body: `AI | 🍓
+      body: `Bogart AI Bot
 ━━━━━━━━━━━━━        
 ${answer}
 ━━━━━━━━━━━━━`,

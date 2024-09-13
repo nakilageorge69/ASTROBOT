@@ -20,8 +20,8 @@ module.exports.run = async function ({ api, event, args, message }) {
       return;
     }
 
-    const response = await axios.get(`https://nash-rest-api-production.up.railway.app/gemini?prompt=${encodeURIComponent(prompt)}`);
-    const response = response.data.response;
+    const respond = await axios.get(`https://nash-rest-api-production.up.railway.app/gemini?prompt=${encodeURIComponent(prompt)}`);
+    const response = respond.data.response;
 
     await api.sendMessage({
       body: `•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 |•\n\n${response}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`,

@@ -20,7 +20,7 @@ module.exports.run = async function ({ api, event, args, message }) {
       return;
     }
 
-    const respond = await axios.get(`https://nash-rest-api-production.up.railway.app/gemini?prompt=${encodeURIComponent(prompt)}`);
+    const respond = await axios.get(`https://hubs-yazky-apis.vercel.app/gpt4o?prompt=${encodeURIComponent(prompt)}`);
     const response = respond.data.response;
 
     await api.sendMessage({

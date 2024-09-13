@@ -20,11 +20,11 @@ module.exports.run = async function ({ api, event, args, message }) {
       return;
     }
 
-    const response = await axios.get(`https://markdevs-last-api-2epw.onrender.com/api/v3/gpt4?ask=${encodeURIComponent(prompt)}`);
-    const answer = response.data.answer;
+    const response = await axios.get(`https://nash-rest-api-production.up.railway.app/gemini?prompt=${encodeURIComponent(prompt)}`);
+    const response = response.data.response;
 
     await api.sendMessage({
-      body: `•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 |•\n\n${answer}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`,
+      body: `•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 |•\n\n${response}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`,
     }, event.threadID);
 
   } catch (error) {

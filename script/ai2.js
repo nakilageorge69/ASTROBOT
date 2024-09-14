@@ -32,8 +32,6 @@ module.exports.run = async function({ api, event, args }) {
     }
   }
 
-  api.sendMessage(`Responding...💬 "${input}"`, event.threadID, event.messageID);
-  
   try {
     const url = event.type === "message_reply" && event.messageReply.attachments[0]?.type === "photo"
       ? { link: event.messageReply.attachments[0].url }

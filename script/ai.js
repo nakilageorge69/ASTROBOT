@@ -1,49 +1,51 @@
 const axios = require('axios');
 
 module.exports.config = {
-    name: "ai",
-    version: "1.0.0",
-    hasPermission: 0,
-    credits: "api by ericson",//api by ericson
-    description: "Gpt architecture",
-    usePrefix: false,
-    commandCategory: "GPT4",
-    cooldowns: 5,
+  name: 'ai',
+  version: '1.0.0',
+  hasPermission: 0,
+  usePrefix: false,
+  aliases: ['gpt', 'openai'],
+  description: "An AI command powered by GPT-4",
+  usages: "ai [prompt]",
+  credits: 'Developer',
+  cooldowns: 3,
+  dependencies: {
+    "axios": ""
+  }
 };
 
-module.exports.run = async function ({ api, event, args }) {
+module.exports.run = async function({ api, event, args }) {
+  const input = args.join(' ');
+
+  if (!input) {
+    api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai What is the capital of France?'`, event.threadID, event.messageID);
+    return;
+  }
+  
+  if (input === "clear") {
     try {
-        const { messageID, messageReply } = event;
-        let prompt = args.join(' ');
-
-        if (messageReply) {
-            const repliedMessage = messageReply.body;
-            prompt = `${repliedMessage} ${prompt}`;
-        }
-
-        if (!prompt) {
-            return api.sendMessage('ʜᴇʟʟᴏ, ɪ ᴀᴍ ɢᴘᴛ-4.\n\nʜᴏᴡ ᴍᴀʏ ɪ ᴀssɪsᴛ ʏᴏᴜ ᴛᴏᴅᴀʏ?', event.threadID, messageID);
-        }
-        api.sendMessage('', event.threadID);
-
-        // Delay
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Adjust the delay time as needed
-
-        const gpt4_api = `https://gpt4withcustommodel.onrender.com/gpt?query=${encodeURIComponent(prompt)}&model=gpt-4-32k-0314`;
-
-        const response = await axios.get(gpt4_api);
-
-        if (response.data && response.data.response) {
-            const generatedText = response.data.response;
-
-            // Ai Answer Here
-            api.sendMessage(`•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 |•\n\n${generatedText}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`, event.threadID, messageID);
-        } else {
-            console.error('API response did not contain expected data:', response.data);
-            api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Response data: ${JSON.stringify(response.data)}`, event.threadID, messageID);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Error details: ${error.message}`, event.threadID, event.messageID);
+      await axios.post('https://satomoigpt.onrender.com/clear', { id: event.senderID });
+      return api.sendMessage("Chat history has been cleared.", event.threadID, event.messageID);
+    } catch {
+      return api.sendMessage('An error occurred while clearing the chat history.', event.threadID, event.messageID);
     }
+  }
+
+  try {
+    const url = event.type === "message_reply" && event.messageReply.attachments[0]?.type === "photo"
+      ? { link: event.messageReply.attachments[0].url }
+      : {};
+
+    const { data } = await axios.post('https://satomoigpt.onrender.com/chat', {
+      prompt: input,
+      customId: event.senderID,
+      ...url
+    });
+
+    api.sendMessage(`•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 |•\n\n${data.message}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`, event.threadID, event.messageID);
+    
+  } catch {
+    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
+  }
 };

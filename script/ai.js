@@ -23,7 +23,7 @@ module.exports.run = async function ({ api, event, args }) {
         }
 
         if (!prompt) {
-            return api.sendMessage('🎀 ʜᴇʟʟᴏ, ɪ ᴀᴍ ɢᴘᴛ-4 ᴛʀᴀɪɴᴇᴅ ʙʏ ᴇʀɪᴄsᴏɴ終.\n\nʜᴏᴡ ᴍᴀʏ ɪ ᴀssɪsᴛ ʏᴏᴜ ᴛᴏᴅᴀʏ?', event.threadID, messageID);
+            return api.sendMessage('ʜᴇʟʟᴏ, ɪ ᴀᴍ ɢᴘᴛ-4.\n\nʜᴏᴡ ᴍᴀʏ ɪ ᴀssɪsᴛ ʏᴏᴜ ᴛᴏᴅᴀʏ?', event.threadID, messageID);
         }
         api.sendMessage('', event.threadID);
 

@@ -40,7 +40,7 @@ module.exports.run = async function ({ api, event, args }) {
             const generatedText = response.data.response;
 
             // Ai Answer Here
-            api.sendMessage(`•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃\n\n${generatedText}•| `, event.threadID, messageID);
+            api.sendMessage(`•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃\n\n${generatedText}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`, event.threadID, messageID);
         } else {
             console.error('API response did not contain expected data:', response.data);
             api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Response data: ${JSON.stringify(response.data)}`, event.threadID, messageID);

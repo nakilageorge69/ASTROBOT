@@ -23,7 +23,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
         const response = await axios.get(apiUrl);
         const { response: result } = response.data;
 
-        const responseMessage = `𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧\n━━━━━━━━━━━━━━━━━━\n${result}\n━━━━━━━━━━━━━━━━━━\n`;
+        const responseMessage = `${result}`;
         api.editMessage(responseMessage, lad.messageID, threadID, messageID);
     } catch (error) {
         console.error(error);
@@ -53,7 +53,7 @@ module.exports.run = async function ({ api, event, args }) {
                 const { vision } = response.data;
 
                 if (vision) {
-                    return api.editMessage(`𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 \n━━━━━━━━━━━━━━━━━━\n${vision}\n━━━━━━━━━━━━━━━━━━\n`, lad.messageID, event.threadID, event.messageID);
+                    return api.editMessage(`${vision}`, lad.messageID, event.threadID, event.messageID);
                 } else {
                     return api.sendMessage("🤖 Failed to recognize the image.", threadID, messageID);
                 }
@@ -63,7 +63,7 @@ module.exports.run = async function ({ api, event, args }) {
         const response = await axios.get(apiUrl);
         const { response: result } = response.data;
 
-        const responseMessage = `𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧\n━━━━━━━━━━━━━━━━━━\n${result}\n━━━━━━━━━━━━━━━━━━`;
+        const responseMessage = `${result}`;
         api.editMessage(responseMessage, lad.messageID, event.threadID, event.messageID);
         global.client.handleReply.push({
             name: this.config.name,

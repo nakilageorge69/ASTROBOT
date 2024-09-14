@@ -9,56 +9,28 @@
       <link rel="stylesheet" href="styles.css">
    </head>
    <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-         <a class="navbar-brand" href="#">Home </a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse justify-content-end" id="navbarNav" style="margin-right: 70px;">
-            <ul class="navbar-nav">
-               <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span>
-                  </a>
-               </li>
-               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Features </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <a class="dropdown-item" href="#">Cookies Extractor</a>
-                     <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="/step_by_step_guide">Step-by-Step Guide</a>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="online_user">Active</a>
-               </li>
-            </ul>
-         </div>
-      </nav>
       <div class="container">
-         <h1 class="col text-center" style="font-size: 20px; padding: 10px;"><b>HOMER AUTOBOT</b></h1>
-         <form id="json-form" onsubmit="submitForm(event)">
-            <div class="row">
-               <div class="col-md-12">
-                  <textarea id="json-data" class="form-control centered-textarea center-placeholder" placeholder=""></textarea>
-               </div>
-            </div>
-         </form>
-         <p style=" margin-top: 10px">Greetings! Begin by entering your cookie. Scroll down to carefully review our Terms and Privacy.</p>
+      <center><h5><b>HOMER AUTOBOT</b></h5></center>
+      <form id="json-form" onsubmit="submitForm(event)">
+      <div class="row">
+      <div class="col-md-12">
+      <textarea id="json-data" class="form-control centered-textarea center-placeholder" placeholder="ENTER YOUR APPSTATE HERE"></textarea>
       </div>
-      <div class="container">
+      </div>
+      </form>
          <div class="container" id="listOfCommands">
-            <h1 style="font-size: 16px; padding: 10px;">Please choose your commands by tapping on the respective options.</h1>
-            <button class="btn btn-primary" onclick="selectAllCommands()">Select all commands</button>
+            <center><h1 style="font-size: 16px; padding: 10px;">Select Commands</h1>
+            <button class="btn btn-primary" onclick="selectAllCommands()">Select all commands</button></center>
          </div>
          <div class="container" id="listOfCommandsEvent">
-            <h1 style="font-size: 16px; padding: 10px;">Please choose your event commands by tapping on the respective options.</h1>
-            <button class="btn btn-primary" onclick="selectAllEvents()">Select all events</button>
+            <center><h1 style="font-size: 16px; padding: 10px;">Select Events</h1>
+            <button class="btn btn-primary" onclick="selectAllEvents()">Select all events</button></center>
          </div>
-         <div class="container" id="prefixOfCommands">
+         <div style="display:none;" class="container" id="prefixOfCommands">
             <h1 style="font-size: 16px; padding: 10px;">Please provide a prefix (optional). If you choose not to, entering 'non-prefix' will be considered as your input</h1>
             <input type="text" id="inputOfPrefix">
          </div>
-         <div class="container" id="adminOfCommands">
+         <div style="display:none;" class="container" id="adminOfCommands">
             <h1 style="font-size: 16px; padding: 10px;">Please provide an uid (optional). If you choose not to, entering 'default' will be considered as your input</h1>
             <input type="text" id="inputOfAdmin">
          </div>
@@ -66,6 +38,9 @@
          <input type="checkbox" id="agreeCheckbox" style="margin-right: 10px;">I have read and agreed to the Terms and Conditions. </label>
          <div class="col text-center">
             <button class="btn btn-primary" onclick="State()" disabled id="submitButton" style="width: 100%">Submit</button>
+            <br>
+            <br>
+            <button class="btn btn-primary" onclick="window.location.href='/online.html'"  style="width: 100%">View Online Users</button>
          </div>
       </div>
       <div id="result" class="container text-center" style="display: none;"></div>

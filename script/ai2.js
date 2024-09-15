@@ -12,9 +12,9 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const input = args.join(" ");
+    const prompt = args.join(" ");
 
-    if (!input) {
+    if (!prompt) {
         return api.sendMessage('This cmd only works in photo.', event.threadID, event.messageID);
     }
 

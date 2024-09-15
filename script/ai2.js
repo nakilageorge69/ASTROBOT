@@ -1,52 +1,39 @@
 const axios = require('axios');
 
 module.exports.config = {
-  name: 'ai2',
-  version: '1.0.0',
-  hasPermission: 0,
-  usePrefix: false,
-  aliases: ['gpt', 'openai'],
-  description: "An AI command powered by GPT-4",
-  usages: "ai [prompt]",
-  credits: 'Developer',
-  cooldowns: 3,
-  dependencies: {
-    "axios": ""
-  }
+    name: "gemini",
+    role: 0,
+    credits: "chill",
+    description: "Interact with Gemini",
+    hasPrefix: false,
+    version: "1.0.0",
+    aliases: ["gemini"],
+    usage: "gemini [reply to photo]"
 };
 
-module.exports.run = async function({ api, event, args }) {
-  const input = args.join(' ');
+module.exports.run = async function ({ api, event, args }) {
+    const prompt = args.join(" ");
 
-  if (!input) {
-    api.sendMessage(`🤖 𝙴𝙳𝚄𝙲 𝙱𝙾𝚃 𝙰𝙸\n    （„• ֊ •„)♡\n▬▬▬▬▬▬▬▬▬▬▬▬\n\n How can I help you today? `, event.threadID, event.messageID);
-    return;
-  }
-  
-  if (input === "clear") {
-    try {
-      await axios.post('https://gpt-4-cfgh.onrender.com/clear', { id: event.senderID });
-      return api.sendMessage("Chat history has been cleared.", event.threadID, event.messageID);
-    } catch {
-      return api.sendMessage('An error occurred while clearing the chat history.', event.threadID, event.messageID);
+    if (!prompt) {
+        return api.sendMessage('This cmd only works in photo.', event.threadID, event.messageID);
     }
-  }
 
-  api.sendMessage(`🔍 "${input}"`, event.threadID, event.messageID);
-  
-  try {
-    const url = event.type === "message_reply" && event.messageReply.attachments[0]?.type === "photo"
-      ? { link: event.messageReply.attachments[0].url }
-      : {};
+    if (event.type !== "message_reply" || !event.messageReply.attachments[0] || event.messageReply.attachments[0].type !== "photo") {
+        return api.sendMessage('Please reply to a photo with this command.', event.threadID, event.messageID);
+    }
 
-    const { data } = await axios.post('https://gpt-4-cfgh.onrender.com/chat', {
-      prompt: input,
-      customId: event.senderID,
-      ...url
-    });
+    const url = encodeURIComponent(event.messageReply.attachments[0].url);
+    api.sendTypingIndicator(event.threadID);
 
-    api.sendMessage(`'🤖 𝙴𝙳𝚄𝙲 𝙱𝙾𝚃 𝙰𝙸\n    （„• ֊ •„)♡\n▬▬▬▬▬▬▬▬▬▬▬▬\n${data.message}\n\nType "ai clear" to reset the conversation.\n▬▬▬▬▬▬▬▬▬▬▬▬\n[📚]|𝗚𝗣𝗧-𝟰`, event.threadID, event.messageID);
-  } catch {
-    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
-  }
+    try {
+        await api.sendMessage('☄️ 𝑮𝑬𝑴𝑰𝑵𝑰\n━━━━━━━━━━━━━━━━━━\nGemini recognizing picture, please wait...\n━━━━━━━━━━━━━━━━━━', event.threadID);
+
+        const response = await axios.get(`https://joshweb.click/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
+        const description = response.data.gemini;
+
+        return api.sendMessage(`☄️ 𝑮𝑬𝑴𝑰𝑵𝑰\n━━━━━━━━━━━━━━━━━━\n${description}\n━━━━━━━━━━━━━━━━━━`, event.threadID, event.messageID);
+    } catch (error) {
+        console.error(error);
+        return api.sendMessage('❌ | An error occurred while processing your request.', event.threadID, event.messageID);
+    }
 };

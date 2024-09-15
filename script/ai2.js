@@ -12,9 +12,9 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const prompt = args.join(" ");
+    const input = args.join(" ");
 
-    if (!prompt) {
+    if (!input) {
         return api.sendMessage('This cmd only works in photo.', event.threadID, event.messageID);
     }
 
@@ -28,7 +28,7 @@ module.exports.run = async function ({ api, event, args }) {
     try {
         await api.sendMessage('𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 𝚁𝙴𝙲𝙾𝙶𝙽𝙸𝚉𝙸𝙽𝙶 𝙸𝙼𝙰𝙶𝙴, 𝙿𝙻𝙴𝙰𝚂𝙴 𝚆𝙰𝙸𝚃...', event.threadID);
 
-        const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
+        const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(input)}&url=${url}`);
         const description = response.data.gemini;
 
         return api.sendMessage(`•| 𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 |•\n\n${description}\n\n•| 𝙾𝚆𝙽𝙴𝚁 : 𝙷𝙾𝙼𝙴𝚁 𝚁𝙴𝙱𝙰𝚃𝙸𝚂 |•`, event.threadID, event.messageID);

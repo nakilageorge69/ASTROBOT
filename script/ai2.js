@@ -28,7 +28,7 @@ module.exports.run = async function ({ api, event, args }) {
     try {
         await api.sendMessage('☄️ 𝑮𝑬𝑴𝑰𝑵𝑰\n━━━━━━━━━━━━━━━━━━\nGemini recognizing picture, please wait...\n━━━━━━━━━━━━━━━━━━', event.threadID);
 
-        const response = await axios.get(`https://joshweb.click/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
+        const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
         const description = response.data.gemini;
 
         return api.sendMessage(`☄️ 𝑮𝑬𝑴𝑰𝑵𝑰\n━━━━━━━━━━━━━━━━━━\n${description}\n━━━━━━━━━━━━━━━━━━`, event.threadID, event.messageID);

@@ -18,10 +18,6 @@ module.exports.run = async function ({ api, event, args }) {
         return api.sendMessage('This cmd only works in photo.', event.threadID, event.messageID);
     }
 
-    if (event.type !== "message_reply" || !event.messageReply.attachments[0] || event.messageReply.attachments[0].type !== "photo") {
-        return api.sendMessage('Please reply to a photo with this command.', event.threadID, event.messageID);
-    }
-
     const url = encodeURIComponent(event.messageReply.attachments[0].url);
     api.sendTypingIndicator(event.threadID);
 

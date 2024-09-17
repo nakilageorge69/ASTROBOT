@@ -1,7 +1,7 @@
 const {
   ai2
 } = require('ai2');
-const herc = new ai2();
+const ai2 = new ai2();
 module.exports.config = {
   name: 'ai2',
   version: '1.0.0',
@@ -19,10 +19,10 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(`Please provide a question or statement after 'hercai'. For example: 'ai2 Pogi ba si George Nakila?'`, event.threadID, event.messageID);
+    api.sendMessage(`Please provide a question or statement after 'ai2'. For example: 'ai2 May jowa naba si George Nakila?'`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(`🔍 "${input}"`, event.threadID, event.messageID);
+  api.sendMessage(`💬 "${input}"`, event.threadID, event.messageID);
   try {
     const response = await herc.question({
       model: "v3",

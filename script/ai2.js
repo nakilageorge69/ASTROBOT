@@ -4,7 +4,7 @@ const axios = require('axios');
 
 module.exports["config"] = {
 
-    name: "ai",
+    name: "ai2",
 
     hasPermssion: 0,
 

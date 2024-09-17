@@ -8,8 +8,8 @@ module.exports.config = {
   aliases: ['gpt', 'openai'],
   description: "An AI command powered by GPT-4",
   usages: "ai [prompt]",
-  credits: 'GeoDevz69',
-  cooldowns: 1,
+  credits: 'Developer',
+  cooldowns: 3,
   dependencies: {
     "axios": ""
   }
@@ -34,7 +34,7 @@ module.exports.run = async function ({ api, event, args }) {
         const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
         const description = response.data.gemini;
 
-        return api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━${description}`, event.threadID, event.messageID);
+        return api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━\n\n${description}\n\n OWNER : GEORGE NAKILA`, event.threadID, event.messageID);
     } catch (error) {
         console.error(error);
         return api.sendMessage('❌ | An error occurred while processing your request.', event.threadID, event.messageID);
@@ -44,7 +44,7 @@ module.exports.run = async function({ api, event, args }) {
   const input = args.join(' ');
 
   if (!input) {
-    api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai What is the capital of France?'`, event.threadID, event.messageID);
+    api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai May jowa naba si George Nakila?'`, event.threadID, event.messageID);
     return;
   }
   
@@ -68,9 +68,10 @@ module.exports.run = async function({ api, event, args }) {
       ...url
     });
 
-    api.sendMessage(`━━━━━━━━━━━━━━━━━\n🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n${data.message}\n OWNER : GEORGE NAKILA\n\n Use ai2 for Image Recognition Onlyl`, event.threadID, event.messageID);
+    api.sendMessage(`\n━━━━━━━━━━━━━━━━━\n🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n${data.message}\n\nOWNER : GEORGE NAKILA\n\n--> 𝚄𝚂𝙴 👉🏻"𝚊𝚒2"👈🏻 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙵𝙾𝚁 𝙸𝙼𝙰𝙶𝙴/𝙿𝙷𝙾𝚃𝙾 𝚁𝙴𝙲𝙾𝙶𝙽𝙸𝚃𝙸𝙾𝙽`, event.threadID, event.messageID);
     
   } catch {
     api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
   }
 };
+                    

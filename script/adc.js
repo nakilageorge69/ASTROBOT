@@ -6,7 +6,7 @@ module.exports.config = {
   usage: '[reply or text]',
   description: 'Apply code from buildtooldev and pastebin',
   credits: 'GeoDevz69',
-  cooldown: 5
+  cooldown: 1
 };
 module.exports.run = async function({
   api,

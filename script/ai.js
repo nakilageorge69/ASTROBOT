@@ -29,15 +29,15 @@ module.exports.run = async function ({ api, event, args }) {
     api.sendTypingIndicator(event.threadID);
 
     try {
-        await api.sendMessage('💬 Responding...', event.threadID);
+        await api.sendMessage('ðŸ’¬ Responding...', event.threadID);
 
         const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
         const description = response.data.gemini;
 
-        return api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━━\n${description}\n`, event.threadID, event.messageID);
+        return api.sendMessage(`ðŸŽ€ ð—šð—–ð—›ð—”ð—§ ð—•ð—¢ð—§ ðŸŽ€\nâ”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n${description}\n`, event.threadID, event.messageID);
     } catch (error) {
         console.error(error);
-        return api.sendMessage('❌ | An error occurred while processing your request.', event.threadID, event.messageID);
+        return api.sendMessage('âŒ | An error occurred while processing your request.', event.threadID, event.messageID);
     }
 };
 module.exports.run = async function({ api, event, args }) {
@@ -68,7 +68,7 @@ module.exports.run = async function({ api, event, args }) {
       ...url
     });
 
-    api.sendMessage(`━━━━━━━━━━━━━━━━━━━\n\n🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n${data.message}\n\n» ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ «\n\n--> 𝚄𝚂𝙴 👉🏻"𝚊𝚒2"👈🏻 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙵𝙾𝚁 𝙸𝙼𝙰𝙶𝙴/𝙿𝙷𝙾𝚃𝙾 𝚁𝙴𝙲𝙾𝙶𝙽𝙸𝚃𝙸𝙾𝙽`, event.threadID, event.messageID);
+    api.sendMessage(`â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n\nðŸŽ€ ð—šð—–ð—›ð—”ð—§ ð—•ð—¢ð—§ ðŸŽ€\n\n${data.message}\n\nÂ» á´á´¡É´á´‡Ê€ : É¢á´‡á´Ê€É¢á´‡ É´á´€á´‹ÉªÊŸá´€ Â«\n\n--> ðš„ðš‚ð™´ ðŸ‘‰ðŸ»"ðšŠðš’2"ðŸ‘ˆðŸ» ð™²ð™¾ð™¼ð™¼ð™°ð™½ð™³ ð™µð™¾ðš ð™¸ð™¼ð™°ð™¶ð™´/ð™¿ð™·ð™¾ðšƒð™¾ ðšð™´ð™²ð™¾ð™¶ð™½ð™¸ðšƒð™¸ð™¾ð™½`, event.threadID, event.messageID);
     
   } catch {
     api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);

@@ -10,7 +10,7 @@ module.exports.config = {
   hasPermssion: 0,
   commandCategory: "other",
   usage: "[shoti]",
-  cooldowns: 5,
+  cooldowns: 1000,
   dependencies: [],
   usePrefix: true,
 };

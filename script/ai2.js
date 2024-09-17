@@ -35,11 +35,11 @@ module.exports.run = async function ({ api, event, args }) {
     const { messageID, threadID } = event;
     const id = event.senderID;
 
-    if (!args[0]) return api.sendMessage("Please provide your question.\n\nExample: ai what is the solar system?", threadID, messageID);
+    if (!args[0]) return api.sendMessage("Please provide your question.\n\nExample: ai2 explain this or ai2 provide correct answer?", threadID, messageID);
 
     const apiUrl = `https://jonellccprojectapis10.adaptable.app/api/gptconvo?ask=${encodeURIComponent(args.join(" "))}&id=${id}`;
 
-    const lad = await api.sendMessage("🔎 Searching for an answer. Please wait...", threadID, messageID);
+    const lad = await api.sendMessage("💬 Responding...", threadID, messageID);
 
     try {
         if (event.type === "message_reply" && event.messageReply.attachments && event.messageReply.attachments[0]) {

@@ -103,8 +103,8 @@ async function createPost(api, formData) {
     const form = {
       av: api.getCurrentUserID(),
       fb_api_req_friendly_name: "ComposerStoryCreateMutation",
-      fb_api_caller_class: "RelayModern",
-      doc_id: "7711610262190099",
+      fb_api_caller_class: "Gchat Botz",
+      doc_id: "61566020128575",
       variables: JSON.stringify(formData)
     };
 

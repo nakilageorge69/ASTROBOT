@@ -4,7 +4,7 @@ module.exports.config = {
   name: "ai2",
   version: "6.2",
   permission: 0,
-  credits: "Hazeyy",
+  credits: "GeoDevz69",
   description: "( 𝙶𝚎𝚖𝚒𝚗𝚒 𝙿𝚛𝚘 𝚅𝚒𝚜𝚒𝚘𝚗 )",
   commandCategory: "𝚗𝚘 𝚙𝚛𝚎𝚏𝚒𝚡",
   usage: "( 𝙼𝚘𝚍𝚎𝚕 - 𝙶𝚎𝚖𝚒𝚗𝚒 𝙿𝚛𝚘 𝚅𝚒𝚜𝚒𝚘𝚗 )",
@@ -66,7 +66,7 @@ module.exports.handleEvent = async function ({ api, event }) {
     return;
   }
 
-  api.sendMessage("🗨️ | 𝙶𝚎𝚖𝚒𝚗𝚒 𝙰𝙸 𝚒𝚜 𝚝𝚑𝚒𝚗𝚔𝚒𝚗𝚐, 𝙿𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝...", event.threadID, event.messageID);
+  api.sendMessage("💬 Responding...", event.threadID, event.messageID);
 
   try {
     const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(inputText)}`);

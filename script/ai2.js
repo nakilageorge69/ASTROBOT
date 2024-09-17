@@ -2,7 +2,7 @@ const axios = require('axios');
 
 module.exports.config = {
     name: "ai2",
-    role: 0,
+    role: 1000,
     credits: "GeoDevz69",
     description: "Interact with Gemini",
     hasPrefix: false,

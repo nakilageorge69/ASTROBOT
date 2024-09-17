@@ -20,7 +20,7 @@ async function convertImageToCaption(imageURL, api, event, inputText) {
 
     if (caption) {
       const formattedCaption = formatFont(caption);
-      api.sendMessage(`🎓 𝐆𝐞𝐦𝐢𝐧𝐢 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n🖋️ 𝙰𝚜𝚔: '${inputText}'\n\n${formattedCaption}`, event.threadID, event.messageID);
+      api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n🖋️ 𝙰𝚜𝚔: '${inputText}'\n\n${formattedCaption}`, event.threadID, event.messageID);
     } else {
       api.sendMessage("🤖 𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚛𝚎𝚌𝚘𝚐𝚗𝚒𝚣𝚎𝚍 𝚝𝚑𝚎 𝚒𝚖𝚊𝚐𝚎𝚜.", event.threadID, event.messageID);
     }
@@ -56,13 +56,13 @@ module.exports.handleEvent = async function ({ api, event }) {
 
   if (args[0] === "on") {
     fontEnabled = true;
-    api.sendMessage({ body: "🎓 𝐆𝐞𝐦𝐢𝐧𝐢 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n» 🟢 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙴𝚗𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
+    api.sendMessage({ body: "🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n» 🟢 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙴𝚗𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
     return;
   }
 
   if (args[0] === "off") {
     fontEnabled = false;
-    api.sendMessage({ body: "🎓 𝐆𝐞𝐦𝐢𝐧𝐢 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n» 🔴 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙳𝚒𝚜𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
+    api.sendMessage({ body: "🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n» 🔴 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙳𝚒𝚜𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
     return;
   }
 
@@ -72,7 +72,7 @@ module.exports.handleEvent = async function ({ api, event }) {
     const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(inputText)}`);
     if (response.status === 200 && response.data.response) {
     const formattedResponse = formatFont(response.data.gemini);
-      api.sendMessage(`🎓 𝐆𝐞𝐦𝐢𝐧𝐢 ( 𝐀𝐈 )\n\n🖋️ 𝙰𝚜𝚔: '${inputText}'\n\n${formattedResponse}`, event.threadID, event.messageID);
+      api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n🖋️ 𝙰𝚜𝚔: '${inputText}'\n\n${formattedResponse}`, event.threadID, event.messageID);
     } else {
       console.error("🤖 𝙴𝚛𝚛𝚘𝚛 𝚐𝚎𝚗𝚎𝚛𝚊𝚝𝚒𝚗𝚐 𝚛𝚎𝚜𝚙𝚘𝚗𝚜𝚎 𝙵𝚛𝚘𝚖 𝙶𝚎𝚖𝚒𝚗𝚒 𝙰𝙿𝙸.");
     }

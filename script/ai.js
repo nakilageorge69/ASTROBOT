@@ -29,7 +29,7 @@ module.exports.run = async function ({ api, event, args }) {
     api.sendTypingIndicator(event.threadID);
 
     try {
-        await api.sendMessage('𝙱𝙾𝙶𝙰𝚁𝚃 𝙰𝙸 𝙱𝙾𝚃 𝚁𝙴𝙲𝙾𝙶𝙽𝙸𝚉𝙸𝙽𝙶 𝙸𝙼𝙰𝙶𝙴, 𝙿𝙻𝙴𝙰𝚂𝙴 𝚆𝙰𝙸𝚃...', event.threadID);
+        await api.sendMessage('💬 Responding...', event.threadID);
 
         const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
         const description = response.data.gemini;

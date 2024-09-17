@@ -13,7 +13,7 @@ module.exports.config = {
 
 async function convertImageToCaption(imageURL, api, event, inputText) {
   try {
-    api.sendMessage("🕟 | 𝙶𝚎𝚖𝚒𝚗𝚒 𝙰𝙸 𝚁𝚎𝚌𝚘𝚐𝚗𝚒𝚣𝚒𝚗𝚐 𝙸𝚖𝚊𝚐𝚎, 𝚙𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝...", event.threadID, event.messageID);
+    api.sendMessage("💬 Responding...", event.threadID, event.messageID);
 
     const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(inputText)}&url=${encodeURIComponent(imageURL)}`);
     const caption = response.data.gemini;

@@ -9,7 +9,7 @@ module.exports.config = {
   description: "An AI command powered by GPT-4",
   usages: "ai [prompt]",
   credits: 'GeoDevz69',
-  cooldowns: 1000,
+  cooldowns: 0,
   dependencies: {
     "axios": ""
   }

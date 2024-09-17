@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 module.exports.config = {
   name: "genimage",
   version: "1.0.0",
-  role: 1000,
+  role: 0,
   hasPrefix: true,
   description: "Search for images on Pinterest.",
   usages: "pinterest [query] - [amount]",

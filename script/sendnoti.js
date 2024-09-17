@@ -21,7 +21,7 @@ module.exports.run = async function ({ api, event, args, admin }) {
 	async function sendMessage(thread) {
 		try {
 			await api.sendMessage(
-` 🄽🄾🅃🅸🅵🅸🅲🄰🅃🅸🄾🄽\n-----------------------\n🌐 [${custom}]\n-----------------------\n🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀`,
+` 🄽🄾🅃🅸🅵🅸🅲🄰🅃🅸🄾🄽\n-----------------------\n📣 [${custom}]\n-----------------------\nғʀᴏᴍ: » ᴀᴅᴍɪɴ ɢᴇᴏʀᴀʏ «`,
 				thread.threadID
 			);
 			sentCount++;

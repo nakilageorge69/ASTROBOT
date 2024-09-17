@@ -34,7 +34,7 @@ module.exports.run = async function ({ api, event, args }) {
         const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
         const description = response.data.gemini;
 
-        return api.sendMessage(`━━━━━━━━━━━━━━━━━━━\n🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n${description}\n━━━━━━━━━━━━━━━━━━━\n\n» ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ «`, event.threadID, event.messageID);
+        return api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━━\n${description}\n`, event.threadID, event.messageID);
     } catch (error) {
         console.error(error);
         return api.sendMessage('❌ | An error occurred while processing your request.', event.threadID, event.messageID);
@@ -68,7 +68,7 @@ module.exports.run = async function({ api, event, args }) {
       ...url
     });
 
-    api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n${data.message}\n\n» ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ «\n\n--> 𝚄𝚂𝙴 👉🏻"𝚊𝚒2"👈🏻 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙵𝙾𝚁 𝙸𝙼𝙰𝙶𝙴/𝙿𝙷𝙾𝚃𝙾 𝚁𝙴𝙲𝙾𝙶𝙽𝙸𝚃𝙸𝙾𝙽`, event.threadID, event.messageID);
+    api.sendMessage(`━━━━━━━━━━━━━━━━━━━\n\n🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n\n${data.message}\n\n» ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ «\n\n--> 𝚄𝚂𝙴 👉🏻"𝚊𝚒2"👈🏻 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙵𝙾𝚁 𝙸𝙼𝙰𝙶𝙴/𝙿𝙷𝙾𝚃𝙾 𝚁𝙴𝙲𝙾𝙶𝙽𝙸𝚃𝙸𝙾𝙽`, event.threadID, event.messageID);
     
   } catch {
     api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);

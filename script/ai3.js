@@ -1,53 +1,35 @@
-const axios = require('axios');
-
+const {
+  Hercai
+} = require('hercai');
+const herc = new Hercai();
 module.exports.config = {
   name: 'ai3',
   version: '1.0.0',
-  hasPermission: 0,
-  usePrefix: false,
-  aliases: ['gpt', 'ai'],
-  description: "An AI command powered by GPT-4",
-  usages: "ai [prompt]",
+  role: 0,
+  hasPrefix: false,
+  description: "An AI command powered by Hercai",
+  usage: "ai [prompt]",
   credits: 'GeoDevz69',
-  cooldowns: 3,
-  dependencies: {
-    "axios": ""
-  }
+  cooldown: 3,
 };
-
-module.exports.run = async function({ api, event, args }) {
+module.exports.run = async function({
+  api,
+  event,
+  args
+}) {
   const input = args.join(' ');
-
   if (!input) {
-    api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai What is the capital of France?'`, event.threadID, event.messageID);
+    api.sendMessage(`I am your virtual assistant.\nHow I can help you baby. 😇`, event.threadID, event.messageID);
     return;
   }
-  
-  if (input === "clear") {
-    try {
-      await axios.post('https://satomoigpt.onrender.com/clear', { id: event.senderID });
-      return api.sendMessage("Chat history has been cleared.", event.threadID, event.messageID);
-    } catch {
-      return api.sendMessage('An error occurred while clearing the chat history.', event.threadID, event.messageID);
-    }
-  }
-
-  api.sendMessage(`🔍 "${input}"`, event.threadID, event.messageID);
-  
+  api.sendMessage(``, event.threadID, event.messageID);
   try {
-    const url = event.type === "message_reply" && event.messageReply.attachments[0]?.type === "photo"
-      ? { link: event.messageReply.attachments[0].url }
-      : {};
-
-    const { data } = await axios.post('https://satomoigpt.onrender.com/chat', {
-      prompt: input,
-      customId: event.senderID,
-      ...url
+    const response = await herc.question({
+      model: "v3",
+      content: input
     });
-
-    api.sendMessage(`${data.message}`, event.threadID, event.messageID);
-    
-  } catch {
+    api.sendMessage(response.reply, event.threadID, event.messageID);
+  } catch (error) {
     api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
   }
 };

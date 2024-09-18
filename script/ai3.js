@@ -17,16 +17,16 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(`Hello how I can help you today?`, event.threadID, event.messageID);
+    api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai What is the capital of France?'`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(``, event.threadID, event.messageID);
+  api.sendMessage(`🔍 "${input}"`, event.threadID, event.messageID);
   try {
     const {
       data
-    } = await axios.get(`https://jonellccprojectapis10.adaptable.app/api/ai?query=${encodeURIComponent(input)}`);
+    } = await axios.get(`https://soyeon-api.onrender.com/api?prompt=${encodeURIComponent(input)}`);
     const response = data.response;
-    api.sendMessage( response + , event.threadID, event.messageID);
+    api.sendMessage(response + '\n\nhttps://bit.ly/create-chatbot-me', event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
   }

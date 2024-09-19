@@ -27,7 +27,7 @@ module.exports.run = async function ({ api, event, args }) {
         const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
         const description = response.data.gemini;
 
-        return api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━\n${description}\n━━━━━━━━━━━━━━━━━\n💕ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ💕\n\nUse 👉ai👈 to answer only on text questions.`, event.threadID, event.messageID);
+        return api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━\n${description}\n━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕\n\nUse 👉ai👈 to answer only on text questions.`, event.threadID, event.messageID);
     } catch (error) {
         console.error(error);
         return api.sendMessage('❌ | An error occurred while processing your request.', event.threadID, event.messageID);

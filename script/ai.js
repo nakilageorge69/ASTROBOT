@@ -22,7 +22,7 @@ module.exports.run = async function ({ api, event, args }) {
         }
 
         if (!prompt) {
-            return api.sendMessage('𝚈𝙴𝚂, 𝙸𝙼 𝙰𝙻𝙸𝚅𝙴 𝙺𝙸𝙽𝙳𝙻𝚈 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝚈𝙾𝚄𝚁 𝚀𝚄𝙴𝚂𝚃𝙸𝙾𝙽 .\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\n 𝙰𝙸 𝚆𝙷𝙰𝚃 𝙸𝚂 𝚆𝙰𝚅𝙴', event.threadID, messageID);
+            return api.sendMessage('🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━\nHello po, I am autobot created by George Nakila way uyab 😂\nDinga kung gusto mo gumamit ng AI nato kindly type 👉ai👈 for text questions and 👉ai2👈 for image\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai mapagmahal ba si George Nakila?\nai2 answer this image correctly', event.threadID, messageID);
         }
 
         // Delay

@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "pidusage": "^3.0.2",
     "@types/node": "^18.0.6",
     "axios": "^1.6.5",
     "bluebird": "^2.11.0",

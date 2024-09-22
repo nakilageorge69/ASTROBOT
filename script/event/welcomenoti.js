@@ -42,7 +42,7 @@ module.exports.handleEvent = async function ({ api, event }) {
 
             // Fallback message if fetching the image fails
             api.sendMessage({
-                body: `Everyone welcome the new member ${name} to ${groupName}!`
+                body: `🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━\n💕 Everyone Let's Welcome Our New Member ${name} to ${groupName}! 💕\n━━━━━━━━━━━━━━━━━━\n💕 ғʀᴏᴍ: ᴀᴅᴍɪɴ ɢᴇᴏʀᴀʏ 💕`
             }, event.threadID);
         }
     }

@@ -22,18 +22,18 @@ module.exports.run = async function ({ api, event, args }) {
         }
 
         if (!prompt) {
-            return api.sendMessage('🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━\nHello po, I am autobot created by George Nakila way uyab 😂\nDinga kung gusto mo gumamit ng AI nato kindly type 👉ai👈 for text questions and 👉ai2👈 for image\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai mapagmahal ba si George Nakila?\nai2 answer this image correctly', event.threadID, messageID);
+            return api.sendMessage('🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━\nHello po, I am autobot created by George Nakila way uyab 😂\nDinga kung gusto mo gumamit ng AI nato kindly type 👉ai👈 for text questions and 👉ai2👈 for image\n\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai mapagmahal ba si George Nakila?\nai2 answer this image correctly', event.threadID, messageID);
         }
 
         // Delay
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Adjust the delay time as needed
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
 
-        const gpt4_api = `https://cprojectapisjonellv2.adaptable.app/api/chatgpt?input=hello${encodeURIComponent(prompt)}&model=gpt-4-32k-0314`;
+        const gpt4_api = `https://cprojectapisjonellv2.adaptable.app/api/chatgpt?input=${encodeURIComponent(prompt)}&model=gpt-4-32k-0314`;
 
         const response = await axios.get(gpt4_api);
 
-        if (response.data && response.data.response) {
-            const generatedText = response.data.response;
+        if (response.data && response.data.result) {
+            const generatedText = response.data.result;
 
             // Ai Answer Here
             api.sendMessage(`🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━\n${generatedText}\n━━━━━━━━━━━━━━━━━━\nғʀᴏᴍ: 💕 ᴀᴅᴍɪɴ ɢᴇᴏʀᴀʏ 💕\n\nUse 👉ai2👈 only for answering image.`, event.threadID, messageID);

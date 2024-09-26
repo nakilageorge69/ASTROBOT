@@ -15,7 +15,7 @@ module.exports.run = async function ({ api, event, args }) {
     const prompt = args.join(" ");
 
     if (!prompt) {
-        return api.sendMessage('This cmd only works in photo.', event.threadID, event.messageID);
+        return api.sendMessage('🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━\nThis cmd only works in photo.\nKindly send image and reply this command.\n\nExample:\nai2 answer this image correctly or\nai2 explain this image correctly\n━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕', event.threadID, event.messageID);
     }
 
     const url = encodeURIComponent(event.messageReply.attachments[0].url);

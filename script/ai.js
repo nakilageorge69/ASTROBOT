@@ -43,6 +43,6 @@ module.exports.run = async function ({ api, event, args }) {
         }
     } catch (error) {
         console.error('Error:', error);
-        api.sendMessage(`✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━━\nTsskk...🙄 ayusin monga tanong mo 🤨: ${error.message}\n━━━━━━━━━━━━━━━━━━\nғʀᴏᴍ: 💕 ᴀᴅᴍɪɴ ɢᴇᴏʀᴀʏ 💕`, event.threadID, event.messageID);
+        api.sendMessage(`✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━━\nTsskk...🙄 ayusin monga tanong mo 🤨: ${error.message}\n━━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID, event.messageID);
     }
 };

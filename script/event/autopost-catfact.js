@@ -6,59 +6,24 @@ module.exports.config = {
     version: "1.0.0",
 };
 
-// Flag to ensure the cron job only runs once
 let isCronStarted = false;
 
 module.exports.handleEvent = async function({ api }) {
     if (!isCronStarted) {
-        // Start the cron job only once
         startAutoPost(api);
         isCronStarted = true;
     }
 };
 
 function startAutoPost(api) {
-    cron.schedule("0 * * * *", async function () { // Runs at the start of every hour
+    cron.schedule('*/50 * * * *', async function () {
         try {
             const response = await axios.get("https://catfact.ninja/fact");
             const catFact = response.data.fact;
 
             const message = `𝚁𝙰𝙽𝙳𝙾𝙼 𝙲𝙰𝚃 𝙵𝙰𝙲𝚃 meow: “${catFact}”`;
-
-            const formData = {
-                input: {
-                    composer_entry_point: "inline_composer",
-                    composer_source_surface: "timeline",
-                    idempotence_token: `${Date.now()}_FEED`,
-                    source: "WWW",
-                    message: {
-                        text: message,
-                    },
-                    audience: {
-                        privacy: {
-                            base_state: "EVERYONE",
-                        },
-                    },
-                    actor_id: api.getCurrentUserID(),
-                },
-            };
-
-            const postResult = await api.httpPost(
-                "https://www.facebook.com/api/graphql/",
-                {
-                    av: api.getCurrentUserID(),
-                    fb_api_req_friendly_name: "ComposerStoryCreateMutation",
-                    fb_api_caller_class: "RelayModern",
-                    doc_id: "7711610262190099",
-                    variables: JSON.stringify(formData),
-                }
-            );
-
-            const postID = postResult.data.story_create.story.legacy_story_hideable_id;
-            const postLink = `https://www.facebook.com/${api.getCurrentUserID()}/posts/${postID}`;
-
-            api.sendMessage(`[AUTO POST]\nLink: ${postLink}`, /* Specify the thread ID or recipient here */);
-            console.log(`[AUTO POST]\nLink: ${postLink}`);
+// credits kenneth panio for direct use of fca
+            api.createPost(message).catch(() => {});
         } catch (error) {
             console.error("Error during auto-posting:", error);
         }

@@ -17,7 +17,7 @@ module.exports.run = async function({ api, event }) {
     const threadInfo = await api.getThreadInfo(event.threadID);
     const memberCount = threadInfo.participantIDs.length;
     
-    api.sendMessage(`✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━━\nHello Master! GeoDevz69 the total number of members in this group are: ${memberCount}\n━━━━━━━━━━━━━━━━━━\n💕 ғʀᴏᴍ: ᴀᴅᴍɪɴ ɢᴇᴏʀᴀʏ 💕`, event.threadID);
+    api.sendMessage(`✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━━\nHello Master! GeoDevz69 the total number of members in this group are: ${memberCount}\n━━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID);
   } catch (error) {
     api.sendMessage(`Error: ${error.message}`, event.threadID, event.messageID);
   }

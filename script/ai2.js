@@ -15,7 +15,7 @@ module.exports.run = async function ({ api, event, args }) {
     const prompt = args.join(" ");
 
     if (!prompt) {
-        return api.sendMessage('✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━\nThis cmd only works in photo.\nKindly send image and reply this command.\n\nExample:\nai2 answer this image correctly or\nai2 explain this image correctly\n━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕', event.threadID, event.messageID);
+        return api.sendMessage('╭─『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』✧✧✧\n│\nThis cmd only works in photo.\nKindly send image and reply this command.\n\nExample:\nai2 answer this image correctly or\nai2 explain this image correctly\n╰─────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕', event.threadID, event.messageID);
     }
 
     const url = encodeURIComponent(event.messageReply.attachments[0].url);
@@ -27,9 +27,9 @@ module.exports.run = async function ({ api, event, args }) {
         const response = await axios.get(`https://deku-rest-api.gleeze.com/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
         const description = response.data.gemini;
 
-        return api.sendMessage(`✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━\n${description}\n━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕\n\nUse 👉ai👈 to answer only on text questions.`, event.threadID, event.messageID);
+        return api.sendMessage(`╭─『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』✧✧✧\n│\n𝘼𝙣𝙨𝙬𝙚𝙧: ${description}\n╰─────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID, event.messageID);
     } catch (error) {
         console.error(error);
-        return api.sendMessage('✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━\nTsskk...🙄 ayusin monga tanong mo 🤨.\n━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕', event.threadID, event.messageID);
+        return api.sendMessage('╭─『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』✧✧✧\n│\nTsskk...🙄 ayusin monga tanong mo 🤨.\n╰─────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕', event.threadID, event.messageID);
     }
 };

@@ -17,7 +17,7 @@ module.exports.run = async function({ api, event }) {
     const threadInfo = await api.getThreadInfo(event.threadID);
     const memberCount = threadInfo.participantIDs.length;
     
-    api.sendMessage(`╭─『 𝗠𝗘𝗠𝗕𝗘𝗥𝗦 』✧✧✧\n╰✧✧✧───────────✧\n𝘼𝙣𝙨𝙬𝙚𝙧: Hello Master! GeoDevz69 the total number of members in this group are: ${memberCount}\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`, event.threadID);
+    api.sendMessage(`╭─『 𝗠𝗘𝗠𝗕𝗘𝗥𝗦 』✧✧✧\n╰✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Hello Master! GeoDevz69 the total number of members in this group are: ${memberCount}\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`, event.threadID);
   } catch (error) {
     api.sendMessage(`Error: ${error.message}`, event.threadID, event.messageID);
   }

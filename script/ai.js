@@ -22,7 +22,7 @@ module.exports.run = async function ({ api, event, args }) {
         }
 
         if (!prompt) {
-            return api.sendMessage('╭─✧✧✧『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』\n│\nHello po, I am 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 created by george nakila way uyab 😂\nBtaw kung gusto mo gumamit ng ai nato kindly follow examples below.\n\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai mapagmahal ba si George?\n│\n╰────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕', event.threadID, messageID);
+            return api.sendMessage('╭─『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』✧✧✧\n╰─────────────────✧✧✧\n𝙂𝙪𝙞𝙙𝙚: Hello po, I am 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 created by george nakila way uyab 😂\nBtaw kung gusto mo gumamit ng ai nato kindly follow examples below.\n\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai mapagmahal ba si George?\n╰─────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕', event.threadID, messageID);
         }
 
         // Delay
@@ -36,13 +36,13 @@ module.exports.run = async function ({ api, event, args }) {
             const generatedText = response.data.result;
 
             // Ai Answer Here
-            api.sendMessage(`╭─✧✧✧『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』\n│\n${generatedText}\n│\n╰────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID, messageID);
+            api.sendMessage(`╭─『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』✧✧✧\n│\n𝘼𝙣𝙨𝙬𝙚𝙧: ${generatedText}\n╰─────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID, messageID);
         } else {
             console.error('API response did not contain expected data:', response.data);
             api.sendMessage(`❌ 𝙰𝙽 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙸𝙻𝙴 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙸𝙽𝙶 𝚃𝙷𝙴 𝚃𝙴𝚇𝚃 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴. 𝙿𝙻𝙴𝙰𝚂𝙴 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 𝙻𝙰𝚃𝙴𝚁. 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴 𝙳𝙰𝚃𝙰: ${JSON.stringify(response.data)}`, event.threadID, messageID);
         }
     } catch (error) {
         console.error('Error:', error);
-        api.sendMessage(`╭─✧✧✧『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』\n│\nTsskk...🙄 ayusin monga tanong mo 🤨: ${error.message}\n│\n╰────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID, event.messageID);
+        api.sendMessage(`╭─『 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 』✧✧✧\n│\nTsskk...🙄 ayusin monga tanong mo 🤨: ${error.message}\n╰─────────────✧✧✧\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID, event.messageID);
     }
 };

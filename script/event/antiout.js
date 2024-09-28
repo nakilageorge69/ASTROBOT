@@ -16,7 +16,7 @@ module.exports.handleEvent = async ({
       if (error) {
         api.sendMessage(`Unable to re-add member ${name} to the group!`, event.threadID);
       } else {
-        api.sendMessage(`✧✧🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀✧✧\n━━━━━━━━━━━━━━━━━━\nOppsss..! ${name} wag kang umalis mamiss ka namin.\n━━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`, event.threadID);
+        api.sendMessage(`╭─『 𝗡𝗢 𝗦𝗖𝗔𝗣𝗘 』✧✧✧\n╰✧✧✧───────────✧\nOppsss..! ${name} wag kang umalis mamiss ka namin.\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`, event.threadID);
       }
     });
   }

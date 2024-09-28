@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports.config = {
-  name: "countmember",
+  name: "count",
   version: "1.0.0",
   role: 0,
   hasPrefix: false,

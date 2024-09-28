@@ -1,32 +1,60 @@
-const axios = require('axios');
+const { TempMail } = require("1secmail-api");
+
+function generateRandomId() {
+		var length = 6;
+		var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+		var randomId = '';
+
+		for (var i = 0; i < length; i++) {
+				randomId += characters.charAt(Math.floor(Math.random() * characters.length));
+		}
+
+		return randomId;
+}
 
 module.exports.config = {
-    name: "gentemp",
-    version: "1.0.0",
-    role: 0,
-    credits: "Gdevz69",
-    description: "Generate a temporary email",
-    hasPrefix: false,
-    aliases: ["genTempEmail", "gentemp", "temp"],
-    usage: "[genTempEmail]",
-    cooldown: 5
+		name: "tempm",
+		role: 2,
+		credits: "GDevz69",
+		description: "Generate temporary email (auto get inbox)",
+		usages: "[tempmail]",
+		hasPrefix: false,
+		cooldown: 5,
+		aliases: ["temp"]
 };
 
-module.exports.run = async function({ api, event }) {
-    try {
-        const apiUrl = 'https://markdevs-last-api-as2j.onrender.com/api/gen';
-        const response = await axios.get(apiUrl);
+module.exports.run = async function ({ api, event }) {
+		const reply = (msg) => api.sendMessage(msg, event.threadID, event.messageID);
 
-        const email = response.data.email;
-        if (!email) {
-            return api.sendMessage("Failed to generate a temporary email. Please try again.", event.threadID);
-        }
+		try {
+				// Generate temporary email
+				const mail = new TempMail(generateRandomId());
 
-        const message = `🎀 𝗚𝗖𝗛𝗔𝗧 𝗕𝗢𝗧 🎀\n━━━━━━━━━━━━━━━━━━\nGenerated Temporary Email: ${email}\n\nPlease use the 'checkinbox' command to see your temp email inbox.\n━━━━━━━━━━━━━━━━━━\n💕 ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ 💕`;
-        api.sendMessage(message, event.threadID);
+				// Auto fetch
+				mail.autoFetch();
 
-    } catch (error) {
-        console.error('Error:', error);
-        api.sendMessage("An error occurred while generating the temporary email.", event.threadID);
-    }
+				if (mail) reply("Your temporary email: " + mail.address);
+
+				// Fetch function
+				const fetch = () => {
+						mail.getMail().then((mails) => {
+								if (!mails[0]) {
+										return;
+								} else {
+										let b = mails[0];
+										var msg = `You have a message!\n\nFrom: ${b.from}\n\nSubject: ${b.subject}\n\nMessage: ${b.textBody}\nDate: ${b.date}`;
+										reply(msg + `\n\nOnce the email and message are received, they will be automatically deleted.`);
+										return mail.deleteMail();
+								}
+						});
+				};
+
+				// Auto fetch every 3 seconds
+				fetch();
+				setInterval(fetch, 3 * 1000);
+
+		} catch (err) {
+				console.log(err);
+				return reply(err.message);
+		}
 };

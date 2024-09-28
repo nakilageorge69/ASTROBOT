@@ -45,7 +45,7 @@ module.exports.run = async function({
   const time = new Date();
   const timestamp = time.toISOString().replace(/[:.]/g, "-");
   if (!input) {
-    api.sendMessage(`To get started, type Pic followed by the name of the image you are looking for, and the expected number of images.\n\nExample:\n\n${prefix}soyeon - 10`, event.threadID, event.messageID);
+    api.sendMessage(`╭─『 𝗣𝗜𝗖𝗧𝗨𝗥𝗘𝗦 』✧✧✧\n╰✧✧✧───────────✧\n𝙂𝙪𝙞𝙙𝙚: To get started, type pic followed by the name of the image you are looking for, and the expected number of images.\n\nExample:\n\n${prefix}hinata - 10\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`, event.threadID, event.messageID);
   } else {
     try {
       const key = input.substr(0, input.indexOf('-'));

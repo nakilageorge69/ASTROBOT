@@ -27,13 +27,13 @@ module.exports.run = async function({
       let end = start + pages;
       let helpMessage = `╭─『 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 』✧✧✧\n╰✧✧✧───────────✧\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
-        helpMessage += `│✧\t${i + 1}. 「 ${prefix}${commands[i]} 」\n╭✧✧✧───────────✧\n   ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs : [08]\n╰─────────────✧✧✧`;
+        helpMessage += `│✧\t${i + 1}. 「 ${prefix}${commands[i]} 」`;
       }
-      helpMessage += '\n╭─『 𝗘𝗩𝗘𝗡𝗧𝗦 』✧✧✧\n╰✧✧✧───────────✧\n│';
+      helpMessage += '\n╭─『 𝗘𝗩𝗘𝗡𝗧𝗦 』✧✧✧\n╰✧✧✧───────────✧\n';
       eventCommands.forEach((eventCommand, index) => {
-        helpMessage += `│✧\t${index + 1}. 「 ${prefix}${eventCommand} 」\n╭✧✧✧───────────✧\n   ʙᴏᴛ ᴇᴠᴇɴᴛs : [06]\n╰─────────────✧✧✧`;
+        helpMessage += `│✧\t${index + 1}. 「 ${prefix}${eventCommand} 」`;
       });
-      helpMessage += `\nPage ${page}/${Math.ceil(commands.length / pages)}. To view the next page, type '${prefix}help page number'. To view information about a specific command, type '${prefix}help command name'.╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`;
+      helpMessage += `\nPage ${page}/${Math.ceil(commands.length / pages)}. To view the next page, type '${prefix}help page number'. To view information about a specific command, type '${prefix}help command name'.\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`;
       api.sendMessage(helpMessage, event.threadID, event.messageID);
     } else if (!isNaN(input)) {
       const page = parseInt(input);

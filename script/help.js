@@ -29,7 +29,7 @@ module.exports.run = async function({
       for (let i = start; i < Math.min(end, commands.length); i++) {
         helpMessage += `│✧「 ${prefix}${commands[i]} 」\n╰────────────────◊`;
       }
-      helpMessage += '╭─『 𝗘𝗩𝗘𝗡𝗧 𝗟𝗜𝗦𝗧 』\n';
+      helpMessage += '╭─『 𝗘𝗩𝗘𝗡𝗧 𝗟𝗜𝗦𝗧 』✧✧\n';
       eventCommands.forEach((eventCommand, index) => {
         helpMessage += `│✧「 ${prefix}${eventCommand} 」\n╰────────────────◊\n;
       });

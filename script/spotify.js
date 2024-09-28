@@ -24,7 +24,7 @@ module.exports.run = async function({ api, event, args }) {
 
         api.sendMessage("Searching for your Music, please wait...", event.threadID);
 
-        const response = await axios.get(`https://spotifydl-api-54n8.onrender.com/spotifydl?search=${encodeURIComponent(query)}`);
+        const response = await axios.get(`https://deku-rest-api.gleeze.com/search/spotify?q=:${encodeURIComponent(query)}`);
         const results = response.data;
 
         if (results.length > 0) {

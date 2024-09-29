@@ -19,7 +19,7 @@ const name = info[event.senderID].name
     const axios = require('axios');
     const fs = require("fs")
     if(msgData[event.messageID].attachments.length === 0) {
-        api.sendMessage(`${name} unsent this message: ${msgData[event.messageID].body}`, event.threadID)  
+        api.sendMessage(`╭─『 𝗥𝗘𝗦𝗘𝗡𝗗 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: ${name} unsent this message: ${msgData[event.messageID].body}\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`, event.threadID)  
     } else if(msgData[event.messageID].attachments[0].type == 'photo')  {   
       var photo = []
       var del = []

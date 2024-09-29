@@ -34,7 +34,7 @@ module.exports.handleEvent = async function ({ api, event }) {
             fs.writeFileSync(filePath, Buffer.from(data));
 
             api.sendMessage({
-                body: `╭─『 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 』✧✧✧\n╰✧✧✧───────────✧\n𝙂𝙧𝙚𝙚𝙩𝙞𝙣𝙜𝙨: Everyone Let's Welcome Our New Member${name} to ${groupName}! ╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`,
+                body: `╭─『 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 』✧✧✧\n╰✧✧✧───────────✧\n𝙂𝙧𝙚𝙚𝙩𝙞𝙣𝙜𝙨: Everyone Let's Welcome Our New Member${name} to ${groupName}!\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`,
                 attachment: fs.createReadStream(filePath)
             }, event.threadID, () => fs.unlinkSync(filePath));
         } catch (error) {

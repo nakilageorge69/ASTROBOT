@@ -6,7 +6,7 @@ module.exports["config"] = {
     name: "music",
     version: "1.0.0",
     info: "Search music from SoundCloud and send it as an attachment.",
-    credits: "Kenneth Panio",
+    credits: "GeoDevz69",
     isPrefix: false,
     role: 0,
     aliases: ['play',

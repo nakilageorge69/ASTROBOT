@@ -43,10 +43,10 @@ module.exports["run"] = async ({
     const musicName = args.join(' ');
 
     if (!musicName) {
-        return chat.reply(`Please provide the title of the music!`);
+        return chat.reply(`╭─『 𝗠𝗨𝗦𝗜𝗖 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚:Please provide the title of the music!\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`);
     }
 
-    const searching = await chat.reply(`🔍 | Searching for "${musicName}"...`);
+    const searching = await chat.reply(`╭─『 𝗠𝗨𝗦𝗜𝗖 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: 🔍 | Searching for "${musicName}"...\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`);
 
     let filePath;
     try {
@@ -64,7 +64,7 @@ module.exports["run"] = async ({
         } = response.data;
 
         if (!title || !audio_b64) {
-            return chat.reply("Can't find the music you're looking for.");
+            return chat.reply("╭─『 𝗠𝗨𝗦𝗜𝗖 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Can't find the music you're looking for.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧");
         }
 
         // Create a temporary file to save the music from the base64 string
@@ -89,7 +89,7 @@ module.exports["run"] = async ({
          chat.reply(message);
 
     } catch (error) {
-        chat.reply(error.message || "An error occurred while fetching the music.");
+        chat.reply(error.message || "╭─『 𝗠𝗨𝗦𝗜𝗖 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚:An error occurred while fetching the music.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧");
     } finally {
         if (filePath && fs.existsSync(filePath)) {
             fs.unlinkSync(filePath); // Clean up the temporary file

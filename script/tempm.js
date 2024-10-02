@@ -16,7 +16,7 @@ module.exports.config = {
 		name: "tempm",
 		role: 0,
 		credits: "GeoDevz69",
-		description: "Generate temporary email (auto get inbox)",
+		description: "Generate temporary email (auto get inbox)\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧",
 		usages: "[tempmail]",
 		hasPrefix: false,
 		cooldown: 5,
@@ -42,8 +42,8 @@ module.exports.run = async function ({ api, event }) {
 										return;
 								} else {
 										let b = mails[0];
-										var msg = `You have a message!\n\nFrom: ${b.from}\n\nSubject: ${b.subject}\n\nMessage: ${b.textBody}\nDate: ${b.date}`;
-										reply(msg + `\n\nOnce the email and message are received, they will be automatically deleted.`);
+										var msg = `╭─『 𝗧𝗘𝗠𝗣𝗠𝗔𝗜𝗟 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚:You have a message!\n\nFrom: ${b.from}\n\nSubject: ${b.subject}\n\nMessage: ${b.textBody}\nDate: ${b.date}`;
+										reply(msg + `\n\nOnce the email and message are received, they will be automatically deleted.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`);
 										return mail.deleteMail();
 								}
 						});

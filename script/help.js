@@ -1,4 +1,7 @@
-module.exports.config = {
+const { OnChat, font } = require("chatbox-utility");
+
+
+module.exports["config"] = {
   name: 'help',
   version: '1.0.0',
   role: 0,
@@ -6,9 +9,9 @@ module.exports.config = {
   aliases: ['info'],
   description: "Beginner's guide",
   usage: "Help [page] or [command]",
-  credits: 'Develeoper',
+  credits: 'GeoDevz69',
 };
-module.exports.run = async function({
+module.exports["run"] = async function({
   api,
   event,
   enableCommands,
@@ -16,6 +19,7 @@ module.exports.run = async function({
   Utils,
   prefix
 }) {
+  const chat = new OnChat(api, event);
   const input = args.join(' ');
   try {
     const eventCommands = enableCommands[1].handleEvent;
@@ -34,7 +38,8 @@ module.exports.run = async function({
         helpMessage += `│✧\t${index + 1}. 「 ${prefix}${eventCommand} 」\n`;
       });
       helpMessage += `╰✧✧✧───────────✧\nPage ${page}/${Math.ceil(commands.length / pages)}. To view the next page, type '${prefix}help page number'. To view information about a specific command, type '${prefix}help command name'.\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`;
-      api.sendMessage(helpMessage, event.threadID, event.messageID);
+     await api.sendMessage(helpMessage, event.threadID, event.messageID);
+     chat.reply({ attachment: await chat.stream("https://i.imgur.com/fhwp3lI.gif") });
     } else if (!isNaN(input)) {
       const page = parseInt(input);
       const pages = 20;
@@ -81,7 +86,7 @@ module.exports.run = async function({
     console.log(error);
   }
 };
-module.exports.handleEvent = async function({
+module.exports["handleEvent"] = async function({
   api,
   event,
   prefix

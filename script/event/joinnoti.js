@@ -5,7 +5,7 @@ let joinNotificationEnabled = true;
 module.exports["config"] = {
     name: "joinnoti",
     info: "Enables or disables join notifications for new members joining the group.",
-    credits: "GeoDevz69",
+    credits: "Kenneth Panio",
     version: "1.0.0 still beta",
     usage: "[on/off]",
 };
@@ -44,7 +44,7 @@ module.exports["handleEvent"] = async ({
                 chat.reply({
                     attachment: await chat.stream("https://i.imgur.com/STzMJu9.gif")
                 });
-                await chat.contact(mono(`╭─『 𝗔𝗡𝗧𝗜𝗢𝗨𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Bot connected successfully to ${groupInfo?.name || "Group Chat"}\n\nGet started with "HELP" to see more commands.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`), chat.botID());
+                await chat.contact(mono(`╭─『 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Bot connected successfully to ${groupInfo?.name || "Group Chat"}\n\nGet started with "HELP" to see more commands.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`), chat.botID());
                 await chat.nickname(`${font.bold("CHATBOX SYSTEM")} ${mono(`> [${prefix || "No Prefix"}]`)}`, chat.botID());
             } else {
                 const name = await chat.userName(joinedUserId);
@@ -66,7 +66,7 @@ module.exports["handleEvent"] = async ({
 
             const name = await chat.userName(leftParticipantFbId);
             const type = event.author === leftParticipantFbId ? "left by itself" : "has been kicked by the administrator";
-            chat.contact(mono(`╭─『 𝗔𝗡𝗧𝗜𝗢𝗨𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Oops! ${name || "facebook user"} ${type}. We'll miss you.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`), leftParticipantFbId);
+            chat.contact(mono(`╭─『 𝗚𝗢𝗢𝗗𝗕𝗬𝗘 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Oops! ${name || "facebook user"} ${type}. We'll miss you.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`), leftParticipantFbId);
         }
     } catch (error) {
         console.error("Error handling event:", error);

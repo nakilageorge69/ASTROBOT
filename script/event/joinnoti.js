@@ -5,7 +5,7 @@ let joinNotificationEnabled = true;
 module.exports["config"] = {
     name: "joinnoti",
     info: "Enables or disables join notifications for new members joining the group.",
-    credits: "Kenneth Panio",
+    credits: "GeoDevz69",
     version: "1.0.0 still beta",
     usage: "[on/off]",
 };

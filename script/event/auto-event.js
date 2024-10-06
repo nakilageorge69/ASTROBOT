@@ -104,8 +104,7 @@ module.exports["handleEvent"] = async function ({
     event
 }) {
     const chat = new OnChat(api, event);
-    
-    chat.killme(module.exports.config.credits || "Autopost", 2);
+
 
     if (!isCronStarted) {
         isCronStarted = true;

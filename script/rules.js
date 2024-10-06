@@ -12,8 +12,6 @@ module.exports["config"] = {
 module.exports["run"] = async ({ api, event }) => {
     const chat = new OnChat(api, event);
     
-    chat.killme(module.exports.config.credits || "rules", 2);
-    
 if (!event.isGroup) return chat.reply(font.bold("Avoid Spamming and Abuse CMDS. to prevent getting banned from chatbot."));
 
 const rules = `1. 𝗥𝗲𝘀𝗽𝗲𝗰𝘁 𝗘𝗮𝗰𝗵 𝗢𝘁𝗵𝗲𝗿: Always be kind and respectful. No insults or negative comments.

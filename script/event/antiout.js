@@ -17,7 +17,7 @@ const filePath = './data/history.json';
 module.exports["handleEvent"] = async ({ event, api }) => {
     const chat = new OnChat(api, event);
     var mono = txt => font.monospace(txt);
-    chat.killme([module.exports.config.credits, atob("Y2lk")], 2);
+
     if (!antiOutEnabled) return;
 
     var nagleft = event.logMessageData?.leftParticipantFbId;

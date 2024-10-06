@@ -41,10 +41,8 @@ module.exports["handleEvent"] = async ({
             if (!joinedUserId) return;
 
             if (joinedUserId === chat.botID()) {
-                chat.reply({
-                    attachment: await chat.stream("https://i.imgur.com/STzMJu9.gif")
-                });
-                await chat.contact(mono(`╭─『 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Bot connected successfully to ${groupInfo?.name || "Group Chat"}\n\nGet started with "HELP" to see more commands.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`), chat.botID());
+            
+                await chat.contact(mono(`╭─『 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Bot connected successfully to ${groupInfo?.name || "Group Chat"}\n\nGet started with "HELP" to see more commands.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`));
                 await chat.nickname(`${font.bold("CHATBOX SYSTEM")} ${mono(`> [${prefix || "No Prefix"}]`)}`, chat.botID());
             } else {
                 const name = await chat.userName(joinedUserId);
@@ -54,11 +52,8 @@ module.exports["handleEvent"] = async ({
                     ? `╭─『 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Welcome ${name || "facebook user"} to ${groupInfo?.name || "Our Group"}! You're the ${memberCount}${getOrdinalSuffix(memberCount)} member.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`
                     : `╭─『 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Welcome ${name || "facebook user"} to our group! Please enjoy your stay.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`;
 
-                chat.reply({
-                    attachment: await chat.stream("https://i.imgur.com/oEvEpyN.gif")
+                chat.reply({ body: message, attachment: await chat.stream("https://i.imgur.com/oEvEpyN.gif")
                 });
-
-                chat.contact(mono(message), joinedUserId);
             }
         } else if (logMessageType === "log:unsubscribe") {
             const leftParticipantFbId = logMessageData?.leftParticipantFbId;

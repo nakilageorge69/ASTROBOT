@@ -1,16 +1,22 @@
+const { OnChat, font } = require('chatbox-utility');
+
 module.exports["config"] = {
     name: "rules",
     aliases: ["rule"],
     isPrefix: false,
     info: "BOT GC RULES AND SIMPLE RULES",
+    credits: "Kenneth Panio",
     cd: 10
 };
 
-module.exports["run"] = async ({ api, event, font }) => {
+module.exports["run"] = async ({ api, event }) => {
+    const chat = new OnChat(api, event);
+    
+    chat.killme(module.exports.config.credits || "rules", 2);
+    
+if (!event.isGroup) return chat.reply(font.bold("Avoid Spamming and Abuse CMDS. to prevent getting banned from chatbot."));
 
-if (!event.isGroup) return api.sendMessage("╭─『 𝗚𝗖 𝗥𝗨𝗟𝗘𝗦 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n📌 𝙋𝙡𝙚𝙖𝙨𝙚 𝙉𝙤𝙩𝙚: Avoid Spamming and Abuse CMDS. to prevent getting banned from chatbot.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧", event.threadID);
-
-const rules = `╭─『 𝗚𝗖 𝗥𝗨𝗟𝗘𝗦 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n📌 𝙋𝙡𝙚𝙖𝙨𝙚 𝙉𝙤𝙩𝙚:\n\n1. 𝗥𝗲𝘀𝗽𝗲𝗰𝘁 𝗘𝗮𝗰𝗵 𝗢𝘁𝗵𝗲𝗿: Always be kind and respectful. No insults or negative comments.
+const rules = `1. 𝗥𝗲𝘀𝗽𝗲𝗰𝘁 𝗘𝗮𝗰𝗵 𝗢𝘁𝗵𝗲𝗿: Always be kind and respectful. No insults or negative comments.
 
 2. 𝗦𝘁𝗮𝘆 𝗢𝗻 𝗧𝗼𝗽𝗶𝗰: Try to keep discussions relevant to the group’s theme or interests.
 
@@ -48,6 +54,6 @@ const rules = `╭─『 𝗚𝗖 𝗥𝗨𝗟𝗘𝗦 』✧✧✧\n╰✧✧�
 
 19. 𝗥𝗮𝗻𝗱𝗼𝗺 𝗔𝗰𝘁𝘀 𝗼𝗳 𝗞𝗶𝗻𝗱𝗻𝗲𝘀𝘀: Encourage sharing compliments or kind words to uplift each other.
 
-20. 𝗛𝗮𝘃𝗲 𝗙𝘂𝗻: Remember that the main goal is to have a good time together, so let loose and enjoy!\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`;
-api.sendMessage(rules, event.threadID);
+20. 𝗛𝗮𝘃𝗲 𝗙𝘂𝗻: Remember that the main goal is to have a good time together, so let loose and enjoy!`;
+chat.reply({ body: font.thin(rules), attachment: await chat.stream("https://i.imgur.com/W8Tt2dO.gif") });
 };

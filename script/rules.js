@@ -14,7 +14,7 @@ module.exports["run"] = async ({ api, event }) => {
     
 if (!event.isGroup) return chat.reply(font.bold("Avoid Spamming and Abuse CMDS. to prevent getting banned from chatbot."));
 
-const rules = `╭─『 𝗧𝗘𝗠𝗣𝗠𝗔𝗜𝗟 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚:\n1. 𝗥𝗲𝘀𝗽𝗲𝗰𝘁 𝗘𝗮𝗰𝗵 𝗢𝘁𝗵𝗲𝗿: Always be kind and respectful. No insults or negative comments.
+const rules = `╭─『 𝗚𝗖 𝗥𝗨𝗟𝗘𝗦 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚:\n1. 𝗥𝗲𝘀𝗽𝗲𝗰𝘁 𝗘𝗮𝗰𝗵 𝗢𝘁𝗵𝗲𝗿: Always be kind and respectful. No insults or negative comments.
 
 2. 𝗦𝘁𝗮𝘆 𝗢𝗻 𝗧𝗼𝗽𝗶𝗰: Try to keep discussions relevant to the group’s theme or interests.
 

@@ -1,7 +1,7 @@
 const { OnChat, font } = require("chatbox-utility");
 
 module.exports["config"] = {
-    name: 'activegc',
+    name:'gclist',
     version: '1.0.0',
     credits: 'Kenneth Panio',
     role: 0,
@@ -87,9 +87,9 @@ module.exports["run"] = async ({ api, event, args }) => {
 
         let msg = '';
         list.forEach((group, index) => {
-            msg += `╭─『 𝗚𝗥𝗢𝗨𝗣𝗦 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n│ 𝘼𝙘𝙩𝙞𝙫𝙚 𝙂𝙧𝙤𝙪𝙥𝙨:\n${index + 1}. ${group.threadName || "Unnamed Group"}\nTID: ${group.threadID}\n\n`;
+            msg += `╭─『 𝗚𝗥𝗢𝗨𝗣𝗦 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n│ 𝘼𝙘𝙩𝙞𝙫𝙚 𝙂𝙧𝙤𝙪𝙥:\n${index + 1}. ${group.threadName || "Unnamed Group"}\nTID: ${group.threadID}\n╰─────────────✧✧✧\n\n`;
         });
-        chat.reply(font.monospace(msg + 'To leave the first thread, e.g: listbox out 1\nTo join the first thread, e.g: listbox join 1 or "all" for bulk actions\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧'));
+        chat.reply(font.monospace(msg + 'To leave the first thread, e.g: gclist out 1\nTo join the first thread, e.g: gclist join 1 or "all" for bulk actions\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧'));
 
     } catch (error) {
         chat.reply(font.monospace("The feature is temporarily unavailable (Blocked By Meta!)."));

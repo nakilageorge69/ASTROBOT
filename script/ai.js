@@ -24,8 +24,8 @@ module.exports.run = async function ({ api, event, args }) {
 
         // Check for attachment in the replied message
         let content = "";
-        if (event.type === "message_reply" && event.messageReply.attachments && event.messageReply.attachments.length > 0) {
-            const attachment = event.messageReply.attachments[0];
+        if (event.type === "message_reply" && messageReply.attachments && messageReply.attachments.length > 0) {
+            const attachment = messageReply.attachments[0];
             content = attachment.url;
         }
 
@@ -41,14 +41,13 @@ module.exports.run = async function ({ api, event, args }) {
         // Delay
         await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
 
-        const roleplay = "You're George Nakila, Bisayang dako";
-
-        const gpt4_api = `https://rest-api-production-5054.up.railway.app/gemini?prompt=${encodeURIComponent(prompt)}&roleplay=${encodeURIComponent(roleplay)}&uid=${event.senderID}&file_url=${encodeURIComponent(content)}`;
+        // New API URL
+        const gpt4_api = `https://jonellprojectccapisexplorer.onrender.com/api/gptconvo?ask=${encodeURIComponent(prompt)}&id=${event.senderID}`;
 
         const response = await axios.get(gpt4_api);
 
-        if (response.data && response.data.message) {
-            const generatedText = response.data.message;
+        if (response.data && response.data.response) {
+            const generatedText = response.data.response;
 
             // AI Answer
             api.sendMessage(
@@ -59,7 +58,7 @@ module.exports.run = async function ({ api, event, args }) {
         } else {
             console.error('API response did not contain expected data:', response.data);
             api.sendMessage(
-                `❌ 𝙰𝙽 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙄𝙻𝙴 𝙶𝙴𝙉𝙴𝚁𝙰𝚃𝙸𝙽𝙶 𝚃𝙷𝙴 𝚃𝙴𝚇𝚃 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴. 𝙿𝙻𝙴𝙰𝚂𝙴 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 𝙻𝙰𝚃𝙴𝚁. 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴 𝙳𝙰𝚃𝙰: ${JSON.stringify(response.data)}`,
+                `❌ 𝙰𝙽 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙸𝙻𝙴 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙸𝙽𝙶 𝚃𝙷𝙴 𝚃𝙴𝚇𝚃 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴. 𝙿𝙻𝙴𝙰𝚂𝙴 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 𝙻𝙰𝚃𝙴𝚁. 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴 𝙳𝙰𝚃𝙰: ${JSON.stringify(response.data)}`,
                 event.threadID,
                 messageID
             );
@@ -69,7 +68,7 @@ module.exports.run = async function ({ api, event, args }) {
         api.sendMessage(
             `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\nSorry, down pa yong API, baka pwedeng mag-antay ka nalang muna. Inaayos pa ni admin George Nakila yong API. Thanks for understanding 🥰: ${error.message}\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`,
             event.threadID,
-            event.messageID
+            messageID
         );
     }
 };

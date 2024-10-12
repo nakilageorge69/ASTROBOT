@@ -27,10 +27,10 @@ module.exports.run = async ({ event, api }) => {
   if (args.length >= 2) {
     if (args[1].toLowerCase() === "on") {
       autoAccept = true;
-      return api.sendMessage("Auto-accept is now turned on.", event.threadID);
+      return api.sendMessage("╭─『 𝗜𝗠𝗔𝗚𝗘 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Auto-accept is now turned on.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧", event.threadID);
     } else if (args[1].toLowerCase() === "off") {
       autoAccept = false;
-      return api.sendMessage("Auto-accept is now turned off.", event.threadID);
+      return api.sendMessage("╭─『 𝗜𝗠𝗔𝗚𝗘 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Auto-accept is now turned off.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧", event.threadID);
     }
   }
 
@@ -58,8 +58,8 @@ module.exports.run = async ({ event, api }) => {
       form.variables = JSON.parse(form.variables);
     }
 
-    api.sendMessage(`Auto-accepted ${success.length} friend requests:\n${success.join("\n")}${failed.length > 0 ? `\nFailed to accept with ${failed.length} person: ${failed.join("\n")}` : ""}`, event.threadID);
+    api.sendMessage(`╭─『 𝗜𝗠𝗔𝗚𝗘 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Auto-accepted ${success.length} friend requests:\n${success.join("\n")}${failed.length > 0 ? `\nFailed to accept with ${failed.length} person: ${failed.join("\n")}` : ""}\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`, event.threadID);
   } else {
-    api.sendMessage("Auto-accept is currently turned off.", event.threadID);
+    api.sendMessage("╭─『 𝗜𝗠𝗔𝗚𝗘 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Auto-accept is currently turned off.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧", event.threadID);
   }
 };

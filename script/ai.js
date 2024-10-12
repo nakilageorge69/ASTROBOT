@@ -42,7 +42,7 @@ module.exports.run = async function ({ api, event, args }) {
         await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
 
         // New API URL
-        const gpt4_api = `https://jonellprojectccapisexplorer.onrender.com/api/gptconvo?ask=${encodeURIComponent(prompt)}&id=${event.senderID}`;
+        const gpt4_api = `https://gpt4o-hshs.onrender.com/gpt4o?ask=${encodeURIComponent(prompt)}&id=${event.senderID}`;
 
         const response = await axios.get(gpt4_api);
 
@@ -69,6 +69,10 @@ module.exports.run = async function ({ api, event, args }) {
             `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\nSorry, down pa yong API, baka pwedeng mag-antay ka nalang muna. Inaayos pa ni admin George Nakila yong API. Thanks for understanding 🥰: ${error.message}\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`,
             event.threadID,
             messageID
+        );
+    }
+};
+  messageID
         );
     }
 };

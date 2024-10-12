@@ -31,7 +31,7 @@ module.exports.run = async function ({ api, event, args }) {
             const attachment = messageReply.attachments[0];
             if (attachment.type === "photo") {
                 const imageURL = attachment.url;
-                const geminiUrl = `https://joncll.serv00.net/chat.php?ask=${encodeURIComponent(prompt)}&imgurl=${encodeURIComponent(imageURL)}`;
+                const geminiUrl = `https://jonellprojectccapisexplorer.onrender.com/api/gptconvo?ask=${encodeURIComponent(prompt)}&imgurl=${encodeURIComponent(imageURL)}`;
                 const response = await axios.get(geminiUrl);
                 const { vision } = response.data;
 

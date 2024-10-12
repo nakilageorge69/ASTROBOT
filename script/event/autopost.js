@@ -6,7 +6,7 @@ const {
 } = require('chatbox-utility');
 
 module.exports["config"] = {
-    name: "autoevent",
+    name: "autopost",
     version: "1.0.0",
     credits: "GeoDevz69", // warning dont change
 };

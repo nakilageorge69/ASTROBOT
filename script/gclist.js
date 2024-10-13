@@ -89,7 +89,7 @@ module.exports["run"] = async ({ api, event, args }) => {
         list.forEach((group, index) => {
             msg += `╭─『 𝗚𝗥𝗢𝗨𝗣𝗦 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n│ 𝘼𝙘𝙩𝙞𝙫𝙚 𝙂𝙧𝙤𝙪𝙥:\n${index + 1}. ${group.threadName || "Unnamed Group"}\nTID: ${group.threadID}\n╰─────────────✧✧✧\n\n`;
         });
-        chat.reply(font.monospace(msg + 'To leave the first thread, e.g: gclist out 1\nTo join the first thread, e.g: gclist join 1 or "all" for bulk actions\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧'));
+        chat.reply(font.monospace(msg + 'To leave the first thread, e.g: gclist out 1\nTo join the first thread, e.g: gclist join 1 or "all" for bulk actions\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 𝚄𝙽𝚂𝙴𝙽𝙳 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉  𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 𝙵𝙾𝚁 𝙰𝙳𝙼𝙸𝙽 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧'));
 
     } catch (error) {
         chat.reply(font.monospace("The feature is temporarily unavailable (Blocked By Meta!)."));

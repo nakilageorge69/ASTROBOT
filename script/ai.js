@@ -22,13 +22,6 @@ module.exports.run = async function ({ api, event, args }) {
             prompt = `${repliedMessage} ${prompt}`;
         }
 
-        // Check for attachment in the replied message
-        let content = "";
-        if (event.type === "message_reply" && messageReply.attachments && messageReply.attachments.length > 0) {
-            const attachment = messageReply.attachments[0];
-            content = attachment.url;
-        }
-
         // If no prompt is provided, send a help message
         if (!prompt) {
             return api.sendMessage(
@@ -42,12 +35,12 @@ module.exports.run = async function ({ api, event, args }) {
         await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
 
         // New API URL
-        const gpt4_api = `https://gpt4o-hshs.onrender.com/gpt4o?ask=${encodeURIComponent(prompt)}&id=${event.senderID}`;
+        const apiUrl = `https://rest-api-production-5054.up.railway.app/ai?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`;
 
-        const response = await axios.get(gpt4_api);
+        const response = await axios.get(apiUrl);
 
-        if (response.data && response.data.response) {
-            const generatedText = response.data.response;
+        if (response.data && response.data.message) {
+            const generatedText = response.data.message;
 
             // AI Answer
             api.sendMessage(

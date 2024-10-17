@@ -18,7 +18,7 @@ module.exports.run = async function ({ api, event, args }) {
     // Validate input
     if (!prompt && (!messageReply || !messageReply.attachments || messageReply.attachments.length === 0)) {
         return api.sendMessage(
-            '╭─『 𝗜𝗠𝗔𝗚𝗘 𝗕𝗢𝗧 』✧✧✧\n' +
+            '╭─『 𝗖𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗘 』✧✧✧\n' +
             '╰✧✧✧───────────✧\n' +
             '╭✧✧✧───────────✧\n' +
             '𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Please provide a question or reply to a photo.\n\n' +
@@ -39,7 +39,7 @@ module.exports.run = async function ({ api, event, args }) {
     api.sendTypingIndicator(event.threadID);
 
     try {
-        await api.sendMessage('📝 Answering...', event.threadID);
+        await api.sendMessage('📝 Solving...', event.threadID);
 
         // Handle replying to an image
         if (messageReply && messageReply.attachments && messageReply.attachments[0]) {
@@ -71,7 +71,7 @@ module.exports.run = async function ({ api, event, args }) {
 
 // Helper function to create a response message
 function createResponseMessage(content) {
-    return `╭─『 𝗜𝗠𝗔𝗚𝗘 𝗕𝗢𝗧 』✧✧✧\n` +
+    return `╭─『 𝗖𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗘 』✧✧✧\n` +
            `╰✧✧✧───────────✧\n` +
            `╭✧✧✧───────────✧\n` +
            `𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: ${content}\n` +
@@ -86,7 +86,7 @@ function createResponseMessage(content) {
 
 // Helper function to create an error message
 function createErrorMessage(content) {
-    return `╭─『 𝗜𝗠𝗔𝗚𝗘 𝗕𝗢𝗧 』✧✧✧\n` +
+    return `╭─『 𝗖𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗘 』✧✧✧\n` +
            `╰✧✧✧───────────✧\n` +
            `╭✧✧✧───────────✧\n` +
            `𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: ${content}\n` +

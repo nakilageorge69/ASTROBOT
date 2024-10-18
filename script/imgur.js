@@ -27,7 +27,7 @@ class Imgur {
 			return response.data.data.link;
 		} catch (error) {
 			console.error(error);
-			throw new Error("Failed to upload image to Imgur");
+			throw new Error(error.message || "SOMETHING WENT WRONG!");
 		}
 	}
 }

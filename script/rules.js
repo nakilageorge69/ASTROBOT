@@ -24,5 +24,5 @@ const rules = `╭─『 𝗚𝗖 𝗥𝗨𝗟𝗘𝗦 』✧✧✧\n╰✧✧�
 𝟰. 𝗡𝗼 𝗕𝗮𝗱𝘄𝗼𝗿𝗱𝘀 & 𝗙𝗹𝗼𝗼𝗱𝗟𝗶𝗸𝗲𝘀: Ipinagbabawal ang pag mumura at pagla-likezone sa gc upang di masipa ng admin o moderator. 
 
 𝟱. 𝗥𝗲𝘀𝗽𝗲𝗰𝘁 𝗘𝘃𝗲𝗿𝘆𝗼𝗻𝗲𝘀 𝗤𝘂𝗲𝘀𝘁𝗶𝗼𝗻𝘀: Always be kind, humble and respectful. No insults or negative comments. Then huwag tawanan ang anumang tanong sa halip ang magtulungan.\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 𝙵𝙾𝚁 𝙰𝙳𝙼𝙸𝙽 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`;
-chat.reply({ body: font.thin(rules), attachment: await chat.stream("https://i.imgur.com/Jwdn72N.mp4") });
+chat.reply({ body: font.thin(rules), attachment: await chat.stream("https://i.imgur.com/qWY2oxw.gif") });
 };

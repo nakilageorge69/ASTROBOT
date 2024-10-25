@@ -43,7 +43,7 @@ module.exports["handleEvent"] = async ({
             if (joinedUserId === chat.botID()) {
             
                 await chat.contact(mono(`╭─『 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Bot connected successfully to ${groupInfo?.name || "Group Chat"}\n\nGet started with "HELP" to see more commands.\n╰─────────────✧✧✧\n╭✧✧✧───────────✧\n   ᴏᴡɴᴇʀ : ɢᴇᴏʀɢᴇ ɴᴀᴋɪʟᴀ\n╰─────────────✧✧✧`));
-                await chat.nickname(`${font.bold("CHATBOX SYSTEM")} ${mono(`> [${prefix || "No Prefix"}]`)}`, chat.botID());
+                await chat.nickname(`${font.bold("META AI")} ${mono(`> [${prefix || "No Prefix"}]`)}`, chat.botID());
             } else {
                 const name = await chat.userName(joinedUserId);
                 const memberCount = groupInfo?.participantIDs?.length || event?.participantIDs?.length;

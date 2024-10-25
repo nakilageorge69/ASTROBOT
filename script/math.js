@@ -2,92 +2,66 @@ const axios = require('axios');
 
 module.exports.config = {
     name: "math",
-    role: 0,
-    credits: "GeoDevz69",
-    description: "Interact with AI for educational purposes",
-    hasPrefix: false,
     version: "1.0.0",
-    aliases: ["chatgpt", "gpt"],
-    usage: "ai [your question or reply to an image]",
+    hasPermission: 0,
+    credits: "GeoDevz", // cmd by George, not the API
+    description: "GPT architecture",
+    usePrefix: false,
+    commandCategory: "GPT4",
+    cooldowns: 5,
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const { messageReply } = event;
-    const prompt = args.join(" ");
-
-    // Validate input
-    if (!prompt && (!messageReply || !messageReply.attachments || messageReply.attachments.length === 0)) {
-        return api.sendMessage(
-            '╭─『 𝗖𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗘 』✧✧✧\n' +
-            '╰✧✧✧───────────✧\n' +
-            '╭✧✧✧───────────✧\n' +
-            '𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: Please provide a question or reply to a photo.\n\n' +
-            'Example:\nai what is the solar system?\n' +
-            'Or reply to a photo with this command.\n' +
-            '╰─────────────✧✧✧\n' +
-            '◉ 𝚁𝙴𝙿𝙻𝚈 𝚄𝙽𝚂𝙴𝙽𝙳 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n' +
-            '◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n' +
-            '╭✧✧✧───────────✧\n' +
-            '    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\n' +
-            'https://www.facebook.com/geotechph.net\n' +
-            '╰─────────────✧✧✧', event.threadID, event.messageID
-        );
-    }
-
-    const apiUrl = `https://www.niroblr.cloud/api/astronova?ask=${encodeURIComponent(prompt)}`;
-
-    api.sendTypingIndicator(event.threadID);
-
     try {
-        await api.sendMessage('📝 Solving...', event.threadID);
+        const { messageID, messageReply } = event;
+        let prompt = args.join(' ');
 
-        // Handle replying to an image
-        if (messageReply && messageReply.attachments && messageReply.attachments[0]) {
-            const attachment = messageReply.attachments[0];
-
-            if (attachment.type === "photo") {
-                const imageURL = attachment.url;
-                // Here you can integrate image handling if needed
-            }
+        // Include replied message in the prompt if it exists
+        if (messageReply) {
+            const repliedMessage = messageReply.body;
+            prompt = `${repliedMessage} ${prompt}`;
         }
 
-        const response = await axios.get(apiUrl);
-        const { response: result } = response.data;
+        // If no prompt is provided, send a help message
+        if (!prompt) {
+            return api.sendMessage(
+                `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙂𝙪𝙞𝙙𝙚: Hello po sainyo, I am 𝗠𝗲𝘁𝗮 𝗔𝗜 created by george nakila, single na mabait, kalog, sweet at di babaero 🥴\nBtaw kung gusto mo gumamit ng AI nato kindly follow examples below.\n\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai mapagmahal ba si George?\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`,
+                event.threadID,
+                messageID
+            );
+        }
 
-        return api.sendMessage(createResponseMessage(result), event.threadID, event.messageID);
+        // Delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        // New API URL
+        const apiUrl = `https://www.niroblr.cloud/api/astronova?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`;
+
+        const response = await axios.get(apiUrl);
+
+        if (response.data && response.data.message) {
+            const generatedText = response.data.message;
+
+            // AI Answer
+            api.sendMessage(
+                `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝘼𝙣𝙨𝙬𝙚𝙧: ${generatedText}\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`,
+                event.threadID,
+                messageID
+            );
+        } else {
+            console.error('API response did not contain expected data:', response.data);
+            api.sendMessage(
+                `❌ 𝙰𝙽 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙸𝙻𝙴 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙸𝙽𝙶 𝚃𝙷𝙴 𝚃𝙴𝚇𝚃 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴. 𝙿𝙻𝙴𝙰𝚂𝙴 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 𝙻𝙰𝚃𝙴𝚁. 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴 𝙳𝙰𝚃𝙰: ${JSON.stringify(response.data)}`,
+                event.threadID,
+                messageID
+            );
+        }
     } catch (error) {
-        console.error(error);
-        return api.sendMessage(createErrorMessage(`An error occurred: ${error.message}`), event.threadID, event.messageID);
+        console.error('Error:', error);
+        api.sendMessage(
+            `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\nSorry, down pa yong API, baka pwedeng mag-antay ka nalang muna. Inaayos pa ni admin George Nakila yong API. Thanks for understanding 🥰: ${error.message}\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`,
+            event.threadID,
+            messageID
+        );
     }
 };
-
-// Helper function to create a response message
-function createResponseMessage(content) {
-    return `╭─『 𝗖𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗘 』✧✧✧\n` +
-           `╰✧✧✧───────────✧\n` +
-           `╭✧✧✧───────────✧\n` +
-           `𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: ${content}\n` +
-           `╰─────────────✧✧✧\n` +
-           `◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n` +
-           `◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n` +
-           `╭✧✧✧───────────✧\n` +
-           `    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\n` +
-           `https://www.facebook.com/geotechph.net\n` +
-           `╰─────────────✧✧✧`;
-}
-
-// Helper function to create an error message
-function createErrorMessage(content) {
-    return `╭─『 𝗖𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗘 』✧✧✧\n` +
-           `╰✧✧✧───────────✧\n` +
-           `╭✧✧✧───────────✧\n` +
-           `𝙍𝙚𝙨𝙥𝙤𝙣𝙨𝙚: ${content}\n` +
-           `╰─────────────✧✧✧\n` +
-           `◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚏𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n` +
-           `◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n` +
-           `╭✧✧✧───────────✧\n` +
-           `    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\n` +
-           `https://www.facebook.com/geotechph.net\n` +
-           `╰─────────────✧✧✧`;
-}
-  

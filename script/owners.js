@@ -22,6 +22,7 @@ const rules = `╭─『 𝗔𝗗𝗠𝗜𝗡𝗙𝗢 』✧✧✧\n╰✧✧✧
 ◉ AGE: 14 YR/OLD
 ◉ SPORTS: BILLIARD 
 ◉ LOCATION: INDONESIA
+◉ DREAM: MAKASAMA SYA
 ◉ OWNERS LINK: https://www.facebook.com/geotechph.net\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 𝚄𝙽𝚂𝙴𝙽𝙳 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 𝙵𝙾𝚁 𝙰𝙳𝙼𝙸𝙽 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`;
 chat.reply({ body: font.thin(rules), attachment: await chat.stream("https://i.imgur.com/TUXOKno.jpeg") });
 };

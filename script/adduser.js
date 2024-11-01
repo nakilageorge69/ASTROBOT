@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "adduser",
     version: "1.0.0",
-    role: 0,
+    role: 1,
     credits: "GeoDevz69",
     description: "Add a user ",
     hasPrefix: false,

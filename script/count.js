@@ -4,7 +4,7 @@ const path = require('path');
 module.exports.config = {
   name: "count",
   version: "1.0.0",
-  role: 0,
+  role: 1,
   hasPrefix: false,
   description: "Count all members in the group chat",
   usages: "countmember",

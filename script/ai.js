@@ -4,6 +4,7 @@ module.exports.config = {
     name: "ai",
     version: "1.0.0",
     hasPermission: 0,
+    aliases: ["hi, hello, "],
     credits: "GeoDevz", // cmd by George, not the API
     description: "GPT architecture",
     usePrefix: false,

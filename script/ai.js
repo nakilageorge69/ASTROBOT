@@ -4,7 +4,33 @@ module.exports.config = {
     name: "ai",
     version: "1.0.0",
     hasPermission: 0,
-    aliases: ["hi, hello, "],
+    aliases: ['hi',
+              'hello',
+              'meta',
+              'what',
+              'who',
+              'where',
+              'why',
+              'when',
+              'ask',
+              'gpt4',
+              'is',
+              'ano',
+              'paano',
+              'gaano',
+              'kailan',
+              'saan',
+              'sino',
+              'tol',
+              'bot',
+              'guys',
+              'yo',
+              'george',
+              'loy',
+              'admin',
+              'hoy',
+              'kol',
+              'hey',],
     credits: "GeoDevz", // cmd by George, not the API
     description: "GPT architecture",
     usePrefix: false,
@@ -26,7 +52,7 @@ module.exports.run = async function ({ api, event, args }) {
         // If no prompt is provided, send a help message
         if (!prompt) {
             return api.sendMessage(
-                `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙂𝙪𝙞𝙙𝙚: Hello po sainyo, I am 𝗠𝗲𝘁𝗮 𝗔𝗜 created by george nakila, single na mabait, kalog, sweet at di babaero.\nBtaw kung gusto mo gumamit ng AI nato kindly follow examples below.\n\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai mapagmahal ba si George?\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`,
+                `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝙂𝙪𝙞𝙙𝙚: Hello! maaring busy pa si admin ngayon. Ano maipag-lilingkod ko sayo? I am 𝗠𝗲𝘁𝗮 𝗔𝗜 created by george nakila, single na mabait, kalog, sweet at di babaero.\nBtaw kung gusto mo gumamit ng AI nato kindly follow examples below.\n\n𝙴𝚇𝙰𝙼𝙿𝙻𝙴:\nai define love in one word?\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 '𝚄𝙽𝚂𝙴𝙽𝙳' 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸'𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉ 𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`,
                 event.threadID,
                 messageID
             );

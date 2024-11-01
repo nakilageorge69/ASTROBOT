@@ -7,7 +7,7 @@ module.exports["config"] = {
     role: 1,
     info: 'List threads bot participated in',
     type: 'thread',
-    cd: 15
+    cd: 5
 };
 
 module.exports["run"] = async ({ api, event, args }) => {

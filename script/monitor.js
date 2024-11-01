@@ -5,6 +5,7 @@ module.exports.config = {
 		name: "monitor",
 		version: "1.0.2",
 		role: 0,
+	        hasPermission: 1,
 		credits: "GeoDevz69",
 		description: "uptime",
 		hasPrefix: true,

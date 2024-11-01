@@ -4,7 +4,7 @@ module.exports["config"] = {
     name:'gclist',
     version: '1.0.0',
     credits: 'Kenneth Panio',
-    role: 0,
+    role: 1,
     info: 'List threads bot participated in',
     type: 'thread',
     cd: 15

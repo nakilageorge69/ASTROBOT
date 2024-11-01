@@ -100,10 +100,7 @@ module.exports["handleEvent"] = async function({
   if (body?.toLowerCase().startsWith('prefix')) {
     api.sendMessage(message, threadID, messageID);
   }
-}
-ide",
-  usage: "Help [page] or [command]",
-  credits: 'Cid',
+
 };
 module.exports["run"] = async function({
   api,
@@ -195,4 +192,4 @@ module.exports["handleEvent"] = async function({
   if (body?.toLowerCase().startsWith('prefix')) {
     api.sendMessage(message, threadID, messageID);
   }
-        }
+                                          }

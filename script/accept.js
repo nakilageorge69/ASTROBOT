@@ -5,7 +5,7 @@ let autoAccept = true;
 module.exports.config = {
   name: "accept",
   version: "1.0.0",
-  hasPermssion: 2,
+  hasPermssion: 1,
   credits: "GeoDevz69",
   description: "Make friends via Facebook ID",
   commandCategory: "admin",

@@ -1,13 +1,13 @@
 module.exports.config = {
     name: "inform",
     version: "1.0.0",
-    hasPermssion: 2,
+    hasPermssion: 1,
     credits: "GeoDevz69",
     description: "Sends a message to all groups and can only be done by the admin.",
     usePrefix: true,
     commandCategory: "noti",
     usages: "[Text]",
-    cooldowns: 5
+    cooldowns: 3
 };
 
 module.exports.run = async ({ api, event, args }) => {

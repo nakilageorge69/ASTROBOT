@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports.config = {
     name: "imgur",
     version: "1.0.0",
-    role: 0,
+    role: 1,
     hasPrefix: false,
     credits: "cliff", //from fca 
     description: "upload to imgur",

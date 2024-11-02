@@ -2,6 +2,7 @@ module.exports.config = {
     name: "inform",
     version: "1.0.0",
     hasPermssion: 1,
+    role:"admin",
     credits: "GeoDevz69",
     description: "Sends a message to all groups and can only be done by the admin.",
     usePrefix: true,

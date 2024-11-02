@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports.config = {
     name: "kick",
     version: "1.0.0",
-    hasPermission: 1, // Assuming admin permission is required
+    role: 1, // Assuming admin permission is required
     credits: "Your Name",
     description: "Remove the tagged user from the group",
     usePrefix: false,

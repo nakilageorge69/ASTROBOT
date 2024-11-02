@@ -7,6 +7,9 @@ module.exports.config = {
     aliases: [
               'hi',
               'answer',
+              'bro',
+              'low',
+              'loe',
               'identify',
               'give',
               'provide',
@@ -19,6 +22,7 @@ module.exports.config = {
               'evaluate',
               'hello',
               'meta',
+              'boss',
               'what',
               'who',
               'where',

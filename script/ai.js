@@ -6,10 +6,12 @@ module.exports.config = {
     hasPermission: 0,
     aliases: [
               'hi',
+              'define',
               'answer',
               'bro',
               'low',
               'loe',
+              'how',
               'identify',
               'give',
               'provide',

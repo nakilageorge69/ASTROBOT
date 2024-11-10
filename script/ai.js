@@ -80,7 +80,7 @@ module.exports.run = async function ({ api, event, args }) {
         await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
 
         // New API URL
-        const apiUrl = `https://rest-api-production-5054.up.railway.app/ai?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`;
+        const apiUrl = `https://haji-mix.onrender.com/ai?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`;
 
         const response = await axios.get(apiUrl);
 

@@ -7,6 +7,8 @@ module.exports.config = {
     aliases: [
               'hi',
               'define',
+              'magbigay',
+              'ipaliwanag',
               'answer',
               'bro',
               'low',

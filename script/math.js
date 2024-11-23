@@ -5,10 +5,10 @@ module.exports.config = {
     version: '1.0.0',
     role: 0,
     hasPrefix: false,
-    aliases: ['math'],
+    aliases: ['math', 'arlene',],
     description: 'Interact with the Hercai AI',
     usage: 'math [question]',
-    credits: 'churchill',
+    credits: 'GeoDevz69',
     cooldown: 3,
 };
 

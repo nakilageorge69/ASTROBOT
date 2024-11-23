@@ -82,7 +82,7 @@ module.exports.run = async function ({ api, event, args }) {
         await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
 
         // New API URL
-        const apiUrl = `https://haji-mix.onrender.com/ai?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`;
+        const apiUrl = `https://kaiz-apis.gleeze.com/ai?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`;
 
         const response = await axios.get(apiUrl);
 

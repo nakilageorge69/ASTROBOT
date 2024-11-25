@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.config = {
-    name: 'math',
+    name: 'ai',
     version: '1.0.0',
     role: 0,
     hasPrefix: false,
@@ -34,6 +34,7 @@ module.exports.config = {
               'why',
               'when',
               'ask',
+              'arlene',
               'gpt4',
               'is',
               'ano',

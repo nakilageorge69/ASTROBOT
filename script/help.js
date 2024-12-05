@@ -1,7 +1,7 @@
 const { OnChat, font } = require("chatbox-utility");
 
 module.exports["config"] = {
-  name: 'help',
+  name: 'commands',
   version: '1.0.0',
   role: 0,
   hasPrefix: true,

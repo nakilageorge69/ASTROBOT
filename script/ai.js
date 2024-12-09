@@ -77,7 +77,7 @@ module.exports.run = async function({ api, event, args }) {
     });
 
     try {
-        const response = await axios.get('https://haji-mix.onrender.com/v3/hercai', {
+        const response = await axios.get('https://hercai.onrender.com/v3/hercai', {
             params: { question }
         });
         const aiResponse = response.data;

@@ -35,7 +35,7 @@ module.exports.config = {
               'when',
               'ask',
               'arlene',
-              'gpt4',
+              'gpt',
               'is',
               'ano',
               'paano',
@@ -77,7 +77,7 @@ module.exports.run = async function({ api, event, args }) {
     });
 
     try {
-        const response = await axios.get('https://hercai.onrender.com/v3/hercai', {
+        const response = await axios.get('https://kaiz-apis.gleeze.com/v3/hercai', {
             params: { question }
         });
         const aiResponse = response.data;

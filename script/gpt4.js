@@ -31,8 +31,7 @@ module.exports.run = async function ({ api, event, args }) {
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        const apiUrl = `https://kaiz-apis.gleeze.com/api/v2/gpt4?query=${encodeURIComponent(prompt)}`;
-
+        const apiUrl = `https://haji-mix.gleeze.com/gpt4om?prompt=${encodeURIComponent(prompt)}`;
         let attempts = 0;
         let response;
         while (attempts < 3) {

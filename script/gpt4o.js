@@ -4,7 +4,7 @@ module.exports.config = {
     name: "gpt4o",
     version: "1.0.0",
     credits: "GeoDevz69",
-    description: "Interact with Llama AI",
+    description: "Interact with chatgpt",
     hasPrefix: false,
     cooldown: 5,
     aliases: ["gpt4o"]
@@ -25,7 +25,7 @@ module.exports.run = async function ({ api, event, args }) {
         });
 
         try {
-            const response = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-4o?q=${encodeURIComponent(q)}&uid=100`);
+            const response = await axios.get(`https://rest-api-bot.onrender.com/api/chatgpt?query=${encodeURIComponent(q)}`);
             const answer = response.data.response;
 
             const formattedResponse = `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝘼𝙣𝙨𝙬𝙚𝙧: ${answer}\n╰─────────────✧✧✧\n◉ 𝚁𝙴𝙿𝙻𝚈 𝚄𝙽𝚂𝙴𝙽𝙳 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉  𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`;

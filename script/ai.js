@@ -5,7 +5,7 @@ module.exports.config = {
     version: "1.0.0",
     hasPermission: 0,
     credits: "GeoDevz69",
-    description: "Chat with GPT-4 using a conversational format.",
+    description: "Chat with llama using a conversational format.",
     usePrefix: false,
     commandCategory: "GPT4",
     cooldowns: 5,
@@ -16,7 +16,7 @@ module.exports.run = async function ({ api, event, args }) {
         const { messageID, threadID, body } = event;
 
         // If body does not start with "gpt4", ignore the command
-        if (!body || !body.toLowerCase().startsWith("gpt4")) {
+        if (!body || !body.toLowerCase().startsWith("llama")) {
             return;
         }
 
@@ -33,7 +33,7 @@ module.exports.run = async function ({ api, event, args }) {
         // Wait for a second before sending the request
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        const apiUrl = `https://haji-mix.gleeze.com/gpt4om?prompt=${encodeURIComponent(prompt)}`;
+        const apiUrl = `https://api.joshweb.click/api/llama-3-70b?q=${encodeURIComponent(prompt)}`;
         let attempts = 0;
         let response;
 
@@ -42,7 +42,7 @@ module.exports.run = async function ({ api, event, args }) {
                 response = await axios.get(apiUrl);
 
                 // Check if the response data is valid
-                if (response.data && response.data.message) {
+                if (response.data && response.data.result) {
                     break;  // Exit loop if we get a valid response
                 } else {
                     console.warn(`Invalid response received: ${JSON.stringify(response.data)}`);
@@ -64,8 +64,8 @@ module.exports.run = async function ({ api, event, args }) {
             }
         }
 
-        if (response && response.data && response.data.message) {
-            const generatedText = response.data.message;
+        if (response && response.data && response.data.result) {
+            const generatedText = response.data.result;
             api.sendMessage(
                 `╭─『 𝗧𝗘𝗫𝗧𝗦 𝗕𝗢𝗧 』✧✧✧\n╰✧✧✧───────────✧\n╭✧✧✧───────────✧\n𝘼𝙣𝙨𝙬𝙚𝙧: ${generatedText}.\n╰─────────────✧✧✧\n◉ 𝚁𝙀𝙿𝙇𝚈 𝚄𝙽𝚂𝙴𝙽𝙳 𝚃𝙾 𝚁𝙴𝙼𝙾𝚅𝙴 𝚃𝙷𝙴 𝙰𝙸𝚜 𝚁𝙴𝚂𝙿𝙾𝙽𝚂𝙴.\n◉  𝚃𝙷𝙴𝚂𝙴 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙸𝙽𝚃𝙴𝙽𝙳𝙴𝙳 𝙵𝙾𝚁 𝚃𝙴𝚇𝚃 𝙵𝙾𝚁𝙼 𝙾𝙽𝙻𝚈!\n╭✧✧✧───────────✧\n    »𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙰𝙸 𝙾𝚆𝙽𝙴𝚁«\nhttps://www.facebook.com/geotechph.net\n╰─────────────✧✧✧`,
                 threadID,
